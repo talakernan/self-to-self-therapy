@@ -9,18 +9,27 @@
     box-sizing: border-box;
 }
 
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    font-family: 'Rethink Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
     line-height: 1.6;
-    color: #2d3748;
-    background-color: #ffffff;
+    color: #3a2300;
+    background-color: #c7efd9;
     font-size: 16px;
+    display: flex;
+    flex-direction: column;
 }
 
 /* Header & Navigation */
 header {
-    background: #ffffff;
-    border-bottom: 1px solid #e2e8f0;
+    background: #c7efd9;
+    /* Removed border-bottom */
     padding: 1rem 0;
     position: fixed;
     width: 100%;
@@ -29,7 +38,7 @@ header {
 }
 
 nav {
-    max-width: 1200px;
+    max-width: 840px; /* Reduced from 1200px to match section width */
     margin: 0 auto;
     padding: 0 2rem;
     display: flex;
@@ -41,7 +50,7 @@ nav {
     display: flex;
     align-items: center;
     text-decoration: none;
-    color: #2d3748;
+    color: #3a2300;
 }
 
 .logo svg {
@@ -51,7 +60,7 @@ nav {
 .logo-text {
     font-size: 1.5rem;
     font-weight: 600;
-    color: #2d3748;
+    color: #3a2300;
 }
 
 .nav-links {
@@ -60,42 +69,67 @@ nav {
     gap: 2rem;
 }
 
+.nav-links li {
+    opacity: 0;
+    animation: fadeInDown 0.5s ease forwards;
+}
+
+.nav-links li:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.nav-links li:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.nav-links li:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+.nav-links li:nth-child(4) {
+    animation-delay: 0.4s;
+}
+
+.nav-links li:nth-child(5) {
+    animation-delay: 0.5s;
+}
+
 .nav-links a {
-    color: #4a5568;
+    color: #3a2300;
     text-decoration: none;
     font-weight: 500;
     transition: color 0.3s ease;
 }
 
 .nav-links a:hover {
-    color: #2d3748;
+    color: #76a58a;
 }
 
 .portal-nav-link {
-    background: #2d3748;
-    color: white !important;
+    background: #3a2300;
+    color: #c7efd9 !important;
     padding: 0.5rem 1rem;
     border-radius: 4px;
     transition: background-color 0.3s ease;
 }
 
 .portal-nav-link:hover {
-    background: #1a202c !important;
-    color: white !important;
+    background: #76a58a !important;
+    color: #c7efd9  !important;
 }
 
 .mobile-menu-btn {
     display: none;
     background: none;
     border: none;
-    color: #4a5568;
+    color: #3a2300;
     font-size: 1.5rem;
     cursor: pointer;
     transition: color 0.3s ease;
 }
 
 .mobile-menu-btn:hover {
-    color: #2d3748;
+    color: #76a58a;
 }
 
 /* Mobile Menu Overlay */
@@ -105,7 +139,7 @@ nav {
     left: 0;
     width: 100%;
     height: 100vh;
-    background: #ffffff;
+    background: #c7efd9;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -131,7 +165,7 @@ nav {
 }
 
 .mobile-menu-links a {
-    color: #2d3748;
+    color: #3a2300;
     text-decoration: none;
     font-size: 1.5rem;
     font-weight: 500;
@@ -139,7 +173,7 @@ nav {
 }
 
 .mobile-menu-links a:hover {
-    color: #4a5568;
+    color: #76a58a;
 }
 
 .mobile-menu-close {
@@ -150,22 +184,24 @@ nav {
     border: none;
     font-size: 2rem;
     cursor: pointer;
-    color: #4a5568;
+    color: #3a2300;
     transition: color 0.3s ease;
 }
 
 .mobile-menu-close:hover {
-    color: #2d3748;
+    color: #76a58a;
 }
 
 /* Main Content */
 main {
     margin-top: 80px;
+    flex: 1; /* Allow main to grow and push footer down */
 }
 
 /* Hero Section */
 .hero {
-    background: #f7fafc;
+    /* Removed background color */
+    background: #c7efd9;
     text-align: center;
     padding: 6rem 2rem 4rem;
 }
@@ -179,14 +215,14 @@ main {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #4a5568;
+    color: #3a2300;
     font-size: 1.1rem;
 }
 
 .hero h1 {
     font-size: 3rem;
     margin-bottom: 1rem;
-    color: #2d3748;
+    color: #3a2300;
     font-weight: 700;
     line-height: 1.2;
 }
@@ -194,29 +230,29 @@ main {
 .hero .subtitle {
     font-size: 1.5rem;
     margin-bottom: 2rem;
-    color: #4a5568;
+    color: #3a2300;
     font-weight: 500;
 }
 
 .hero p {
     font-size: 1.25rem;
-    max-width: 800px;
+    max-width: 700px; /* Reduced from 800px to maintain proportion with container */
     margin: 0 auto 1.5rem;
-    color: #4a5568;
+    color: #3a2300;
     line-height: 1.6;
 }
 
 .hero .therapist-name {
     font-size: 1.1rem;
     margin-bottom: 2rem;
-    color: #2d3748;
+    color: #3a2300;
     font-weight: 600;
 }
 
 .cta-button {
     display: inline-block;
-    background: #2d3748;
-    color: white;
+    background: #3a2300;
+    color: #c7efd9;
     padding: 1rem 2rem;
     text-decoration: none;
     font-weight: 600;
@@ -225,41 +261,52 @@ main {
 }
 
 .cta-button:hover {
-    background: #1a202c;
+    background: #76a58a;
 }
 
 /* Sections */
 section {
-    max-width: 1200px;
+    max-width: 840px; /* Reduced from 1200px (by ~30%) */
     margin: 0 auto;
     padding: 4rem 2rem;
+}
+
+.page-title {
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    color: #3a2300;
+    font-weight: 700;
+    text-align: center; /* Center the page titles */
 }
 
 .section-title {
     font-size: 2.5rem;
     margin-bottom: 3rem;
-    color: #2d3748;
+    color: #3a2300;
     font-weight: 700;
 }
 
 .section-subtitle {
     font-size: 1.5rem;
     margin-bottom: 2rem;
-    color: #2d3748;
+    color: #3a2300;
     font-weight: 600;
 }
 
 /* About Section */
 .about-content {
-    display: grid;
-    grid-template-columns: 300px 1fr;
-    gap: 4rem;
-    align-items: start;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Changed from center to flex-start to align everything to the left */
     margin-top: 2rem;
+    max-width: 700px;
+    margin-left: 0; /* Changed from auto to 0 to align to the left */
+    margin-right: auto;
 }
 
 .about-image {
-    text-align: center;
+    text-align: left; /* Changed from center to left */
+    margin-bottom: 3rem;
 }
 
 .about-image img {
@@ -268,11 +315,35 @@ section {
     border-radius: 8px;
 }
 
+/* Headshot placeholder styles */
+.headshot-placeholder {
+    width: 250px;
+    height: 250px;
+    background-color: #f3f4f6;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px dashed #cbd5e0;
+    margin-bottom: 1rem;
+}
+
+.headshot-icon {
+    margin-bottom: 1rem;
+}
+
+.headshot-text {
+    color: #3a2300;
+    font-size: 0.9rem;
+}
+
 .about-text {
     font-size: 1.1rem;
     line-height: 1.7;
-    color: #4a5568;
+    color: #3a2300;
     text-align: left;
+    width: 100%;
 }
 
 .about-text p {
@@ -289,13 +360,13 @@ section {
 .faq-question {
     font-size: 1.2rem;
     font-weight: 600;
-    color: #2d3748;
+    color: #3a2300;
     margin-bottom: 0.75rem;
 }
 
 .faq-answer {
     font-size: 1.1rem;
-    color: #4a5568;
+    color: #3a2300;
     line-height: 1.7;
 }
 
@@ -303,8 +374,8 @@ section {
 .fees-content {
     font-size: 1.1rem;
     line-height: 1.7;
-    color: #4a5568;
-    max-width: 800px;
+    color: #4a3a23005568;
+    max-width: 700px; /* Reduced from 800px to maintain proportion with container */
     text-align: left;
 }
 
@@ -315,38 +386,40 @@ section {
 .rate {
     font-size: 1.5rem;
     font-weight: 600;
-    color: #2d3748;
+    color: #3a2300;
     margin-bottom: 1rem;
 }
 
 /* Contact Section */
 .contact-content {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
+    display: flex;
+    justify-content: center;
     margin-top: 2rem;
+    text-align: center;
 }
 
 .contact-info {
-    background: #f7fafc;
-    padding: 2rem;
-    border-radius: 8px;
+    /* Removed background, border-radius, and adjusted padding */
+    padding: 0;
+    max-width: 500px;
+    width: 100%;
 }
 
 .contact-info h3 {
-    color: #2d3748;
+    color: #3a2300;
     margin-bottom: 1.5rem;
-    font-size: 1.25rem;
+    font-size: 1.5rem; /* Slightly larger */
     font-weight: 600;
 }
 
 .contact-info p {
-    margin-bottom: 1rem;
-    color: #4a5568;
+    margin-bottom: 1.25rem; /* Increased spacing between lines */
+    color: #3a2300;
+    font-size: 1.1rem; /* Slightly larger text */
 }
 
 .contact-info a {
-    color: #2d3748;
+    color: #3a2300;
     text-decoration: none;
     font-weight: 500;
 }
@@ -355,30 +428,93 @@ section {
     text-decoration: underline;
 }
 
-.portal-button {
-    display: inline-block;
-    background: #2d3748;
-    color: white;
-    padding: 1rem 2rem;
-    text-decoration: none;
-    font-weight: 600;
-    transition: background-color 0.3s ease;
-    border-radius: 4px;
-    margin-top: 1rem;
-}
-
-.portal-button:hover {
-    background: #1a202c;
-}
-
 /* Footer */
 footer {
-    background: #f7fafc;
-    border-top: 1px solid #e2e8f0;
+    /* Removed background color and border */
+    background: transparent;
+    border-top: none;
     text-align: center;
-    padding: 2rem;
+    padding: 1.5rem;
     margin-top: 4rem;
-    color: #4a5568;
+    color: #76a58a; /* Lighter color for more discrete appearance */
+    font-size: 0.9rem; /* Smaller font size */
+}
+
+/* Animation Keyframes */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideUp {
+    from { 
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to { 
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideIn {
+    from { 
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to { 
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Animation Classes */
+.fade-in, .slide-up, .slide-in {
+    opacity: 0;
+}
+
+.fade-in.animate {
+    animation: fadeIn 1s ease forwards;
+}
+
+.slide-up.animate {
+    animation: slideUp 0.8s ease forwards;
+}
+
+.slide-in.animate {
+    animation: slideIn 0.8s ease forwards;
+}
+
+/* Delay Classes */
+.delay-100.animate {
+    animation-delay: 0.1s;
+}
+
+.delay-200.animate {
+    animation-delay: 0.2s;
+}
+
+.delay-300.animate {
+    animation-delay: 0.3s;
+}
+
+.delay-400.animate {
+    animation-delay: 0.4s;
+}
+
+.delay-500 {
+    animation-delay: 0.5s;
 }
 
 /* Mobile Responsive */
