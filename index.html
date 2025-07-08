@@ -15,8 +15,12 @@
 (function() {
     var password = prompt("Enter password to view site:");
     if (password !== "sneak2peek") {
+        // Completely replace the page content
+        document.head.innerHTML = "<title>Site Coming Soon</title>";
         document.body.innerHTML = "<h1>Site Coming Soon</h1><p>This site is currently under development.</p>";
-        return;
+        // Disable all JavaScript and interactions
+        window.stop();
+        return false;
     }
 })();
 </script>
