@@ -1,0 +1,50 @@
+/* Additional mobile menu styles */
+.mobile-menu-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 2rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #c7e8d8;
+    z-index: 2002;
+}
+
+.mobile-logo {
+    /* Use the same styles as the main logo */
+    display: flex;
+    align-items: center;
+}
+
+/* Adjust the mobile menu links positioning */
+.mobile-menu-links {
+    margin-top: 6rem; /* Add space for the header */
+}
+
+.mobile-menu-close {
+    background: none;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+    color: #3a2300;
+    transition: color 0.3s ease;
+    padding: 0;
+    margin-left: auto;
+}
+
+.mobile-menu-close:hover {
+    color: #76a58a;
+}
+
+/* Fix for overlapping elements */
+.mobile-menu-overlay {
+    padding-top: 6rem;
+}
+
+@media (max-width: 480px) {
+    .mobile-menu-header {
+        padding: 1.5rem;
+    }
+}

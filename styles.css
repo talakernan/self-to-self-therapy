@@ -1,3 +1,23 @@
+.hero-logo-center {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 50vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    pointer-events: none;
+}
+.hero-logo-center img {
+    pointer-events: auto;
+}
+.hero-content-below-gradient {
+    position: relative;
+    z-index: 2;
+    margin-top: calc(50vh + 40px);
+}
 /* 
    Common Stylesheet for Self to Self Therapy
    Created on July 5, 2025
@@ -28,9 +48,9 @@ body {
 
 /* Header & Navigation */
 header {
-    background: #c7e8d8;
+    background: transparent;
     /* Removed border-bottom */
-    padding: 1rem 0;
+    padding: 0; /* Removed top/bottom padding from header */
     position: fixed;
     width: 100%;
     top: 0;
@@ -40,10 +60,10 @@ header {
 nav {
     max-width: 1800px; 
     margin: 0 auto;
-    padding: 0 2rem;
+    padding: 2rem; /* Equal padding on all sides */
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start; /* Change from center to flex-start to top-align */
 }
 
 .logo {
@@ -53,14 +73,20 @@ nav {
     color: #3a2300;
 }
 
-.logo svg {
+.logo svg, .logo img {
     margin-right: 0.5rem;
+    width: 60px;
+    height: auto;
 }
 
 .logo-text {
+    font-family: 'Lexend', sans-serif;
     font-size: 1.5rem;
-    font-weight: 600;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
     color: #3a2300;
+    display: none; /* Hide the text for now */
 }
 
 .nav-links {
@@ -142,12 +168,31 @@ nav {
     background: #c7e8d8;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start; /* Changed from center to flex-start for top alignment */
+    padding-top: 6rem; /* Add padding to push content down */
     align-items: center;
     z-index: 2000;
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+/* Make sure the logo is visible in the mobile menu overlay */
+.mobile-menu-overlay.active ~ header .logo {
+    position: relative;
+    z-index: 2001; /* Higher than the overlay */
+}
+
+/* Fix to ensure logo is always visible when mobile menu is active */
+.mobile-menu-overlay.active + header .logo {
+    position: relative;
+    z-index: 2001; /* Higher than the overlay */
+}
+
+/* Alternative selector to ensure the logo remains visible */
+header .logo {
+    position: relative;
+    z-index: 2001; /* Higher than the overlay */
 }
 
 .mobile-menu-overlay.active {
@@ -186,6 +231,8 @@ nav {
     padding: 0 2rem;
     display: flex;
     justify-content: flex-end;
+    top: 1.2rem;
+    right: 2rem;
     background: none;
     border: none;
     font-size: 2rem;
@@ -194,12 +241,77 @@ nav {
     transition: color 0.3s ease;
 }
 
-.mobile-menu-close::after {
-    content: '×';
+/* Position the X icon in the same place as hamburger icon for mobile */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+    }
+
+    .mobile-menu-btn {
+        display: block;
+    }
+
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .hero p {
+        font-size: 1.1rem;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .about-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        text-align: center;
+    }
+
+    .contact-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
 }
 
-.mobile-menu-close:hover {
-    color: #76a58a;
+@media (max-width: 480px) {
+    .hero {
+        padding: 4rem 1.5rem 3rem; /* Updated side padding to 1.5rem */
+    }
+
+    section {
+        padding: 3rem 1.5rem; /* Updated side padding to 1.5rem */
+    }
+
+    .hero h1 {
+        font-size: 1.75rem;
+    }
+
+    nav {
+        padding: 1.5rem; /* Equal padding to 1.5rem */
+    }
+
+    .mobile-menu-links a {
+        font-size: 1.25rem;
+    }
+
+    .mobile-menu-close {
+        top: 1.5rem; /* Match nav padding on mobile */
+        right: 1.5rem; /* Match nav padding on mobile */
+    }
+  
+    .mobile-menu-close::after {
+      content: '×';
+    }
+
+    .mobile-menu-close:hover {
+      color: #76a58a;
+    }
+    
+    footer {
+        padding: 1.5rem; /* Updated padding to match */
+    }
 }
 
 /* Main Content */
@@ -209,11 +321,25 @@ main {
 }
 
 /* Hero Section */
+
 .hero {
-    /* Removed background color */
-    background: #c7e8d8;
+
+    position: relative;
     text-align: center;
-    padding: 6rem 2rem 4rem;
+    padding: 0 2rem 4rem;
+    z-index: 1;
+    background: none;
+}
+
+.hero-gradient {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 50vh;
+    z-index: 0;
+    background: linear-gradient(120deg, #c7e8d8 0%, #b6d6f2 50%, #f7e6e6 100%);
+    pointer-events: none;
 }
 
 .hero-image {
@@ -222,11 +348,18 @@ main {
     background: #e2e8f0;
     border-radius: 8px;
     margin: 0 auto 3rem;
+    position: absolute;
+    top: 25vh;
+    left: 50%;
+    transform: translate(-50%, -50%);
     display: flex;
     align-items: center;
     justify-content: center;
     color: #3a2300;
     font-size: 1.1rem;
+    position: relative;
+    z-index: 2;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.04);
 }
 
 .hero h1 {
@@ -235,6 +368,7 @@ main {
     color: #3a2300;
     font-weight: 700;
     line-height: 1.2;
+    margin-top: 2rem;
 }
 
 .hero .subtitle {
@@ -448,6 +582,7 @@ footer {
     margin-top: 4rem;
     color: #76a58a; /* Lighter color for more discrete appearance */
     font-size: 0.9rem; /* Smaller font size */
+    font-weight: 300;
 }
 
 /* Animation Keyframes */
@@ -563,11 +698,11 @@ footer {
 
 @media (max-width: 480px) {
     .hero {
-        padding: 4rem 1rem 3rem;
+        padding: 4rem 1.5rem 3rem; /* Updated side padding to 1.5rem */
     }
 
     section {
-        padding: 3rem 1rem;
+        padding: 3rem 1.5rem; /* Updated side padding to 1.5rem */
     }
 
     .hero h1 {
@@ -575,10 +710,19 @@ footer {
     }
 
     nav {
-        padding: 0 1rem;
+        padding: 1.5rem; /* Equal padding to 1.5rem */
     }
 
     .mobile-menu-links a {
         font-size: 1.25rem;
+    }
+
+    .mobile-menu-close {
+        top: 1.5rem; /* Match nav padding on mobile */
+        right: 1.5rem; /* Match nav padding on mobile */
+    }
+    
+    footer {
+        padding: 1.5rem; /* Updated padding to match */
     }
 }
