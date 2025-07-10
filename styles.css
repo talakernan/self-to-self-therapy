@@ -178,14 +178,24 @@ nav {
 
 .mobile-menu-close {
     position: absolute;
-    top: 2rem;
-    right: 2rem;
+    top: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    max-width: 1800px;
+    width: 100%;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: flex-end;
     background: none;
     border: none;
     font-size: 2rem;
     cursor: pointer;
     color: #3a2300;
     transition: color 0.3s ease;
+}
+
+.mobile-menu-close::after {
+    content: '×';
 }
 
 .mobile-menu-close:hover {

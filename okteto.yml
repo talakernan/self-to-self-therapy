@@ -1,0 +1,16 @@
+build:
+  static-site:
+    context: .
+    dockerfile: Dockerfile
+
+deploy:
+  - envsubst < k8s.yml | kubectl apply -f -
+
+dev:
+  static-site:
+    image: okteto/static-site:latest
+    command: ["sh"]
+    sync:
+      - .:/usr/share/nginx/html
+    forward:
+      - 8080:80
