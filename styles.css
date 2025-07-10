@@ -223,6 +223,14 @@ header .logo {
 
 .mobile-menu-close {
     position: absolute;
+    top: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    max-width: 1800px;
+    width: 100%;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: flex-end;
     top: 1.2rem;
     right: 2rem;
     background: none;
@@ -291,6 +299,14 @@ header .logo {
     .mobile-menu-close {
         top: 1.5rem; /* Match nav padding on mobile */
         right: 1.5rem; /* Match nav padding on mobile */
+    }
+  
+    .mobile-menu-close::after {
+      content: '×';
+    }
+
+    .mobile-menu-close:hover {
+      color: #76a58a;
     }
     
     footer {
