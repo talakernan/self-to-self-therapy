@@ -8,7 +8,7 @@
     position: absolute;
     top: 0;
     left: 0;
-    background: #c7e8d8;
+    background: transparent; /* Changed from #c7e8d8 to transparent */
     z-index: 2002;
 }
 
@@ -47,4 +47,28 @@
     .mobile-menu-header {
         padding: 1.5rem;
     }
+}
+
+@media (max-width: 600px) {
+  .hero-columns {
+    padding: 0 5vw !important;
+  }
+}
+
+@media (max-width: 800px) {
+  .hero-columns {
+    flex-direction: column !important;
+    gap: 2rem !important;
+    max-width: 98vw !important;
+    padding: 0 8vw !important;
+  }
+  .hero-col {
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+}
+
+.hero-columns {
+  padding-left: max(5vw, 16px) !important;
+  padding-right: max(5vw, 16px) !important;
 }
