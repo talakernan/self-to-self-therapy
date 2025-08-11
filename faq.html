@@ -13,7 +13,7 @@
 </head>
 <body>
     <!-- Header -->
-    <header>
+    <header class="transparent-header">
         <nav>
             <a href="index.html" class="logo">
                 <img src="images/S2S_icon_transparent_small.svg" alt="Self to Self Therapy logo">
@@ -45,19 +45,67 @@
 
     <!-- Main Content -->
     <main>
-        <section>
-            <h1 class="page-title fade-in">Frequently Asked Questions</h1>
-            
-            <div class="faq-item fade-in delay-100">
-                <div class="faq-question">Do you offer a free consultation?</div>
-                <div class="faq-answer">Yes! I offer a free 20 minute phone or video consultation to discuss scheduling, fees, what's bringing you to therapy, and answer any questions about how I work in order to start getting a feel for if we're a good fit.</div>
-            </div>
-            
-            <div class="faq-item fade-in delay-200">
-                <div class="faq-question">Do you offer telehealth and in-person sessions?</div>
-                <div class="faq-answer">At this moment, I only offer telehealth sessions to people located in Oregon, Washington DC, or Maryland.</div>
-            </div>
-        </section>
+      <div class="site-2col" style="display: flex; flex-direction: row; align-items: flex-start; width: 100%; max-width: 1400px; margin-left: 0; margin-right: auto; gap: 5rem; padding-left: max(1.5vw, 18px); padding-right: max(4vw, 32px); box-sizing: border-box;">
+        <div class="site-2col-left" style="flex: 1 1 0; max-width: 50%; box-sizing: border-box; font-size:1rem; margin: 0;">
+          <h1 class="page-title fade-in">Frequently Asked Questions</h1>
+        </div>
+        <div class="site-2col-right" style="flex: 1 1 400px; max-width: 600px; min-width: 320px; box-sizing: border-box; font-size:1rem; margin: 0; position: absolute; left: 50vw; transform: translateX(0);">
+          <div class="faq-item fade-in delay-100">
+            <div class="faq-question">Do you offer a free consultation?</div>
+            <div class="faq-answer">Yes! I offer a free 20 minute phone or video consultation to discuss scheduling, fees, what's bringing you to therapy, and answer any questions about how I work in order to start getting a feel for if we're a good fit.</div>
+          </div>
+          <div class="faq-item fade-in delay-200">
+            <div class="faq-question">Do you offer telehealth and in-person sessions?</div>
+            <div class="faq-answer">At this moment, I only offer telehealth sessions to people located in Oregon, Washington DC, or Maryland.</div>
+          </div>
+        </div>
+      <style>
+        @media (min-width: 900px) {
+          .site-2col {
+            position: relative;
+            min-height: 500px;
+            padding-top: 8rem !important;
+            align-items: flex-start !important;
+          }
+          .site-2col-right {
+            padding-top: 8rem !important;
+          }
+          .site-2col-right {
+            position: absolute !important;
+            left: 50vw !important;
+            top: 0;
+            transform: translateX(0);
+            min-width: 320px;
+            max-width: 600px;
+            width: 100%;
+          }
+          .site-2col-left {
+            max-width: 50vw !important;
+            padding-left: max(4vw, 32px) !important;
+          }
+        }
+        @media (max-width: 899px) {
+          .site-2col-left {
+            padding-left: max(2vw, 18px) !important;
+          }
+        }
+        @media (max-width: 899px) {
+          .site-2col {
+            flex-direction: column !important;
+            padding-top: 5rem !important;
+            align-items: flex-start !important;
+          }
+          .site-2col-right {
+            padding-top: 5rem !important;
+          }
+          .site-2col-right, .site-2col-left {
+            position: static !important;
+            max-width: 100% !important;
+            width: 100% !important;
+          }
+        }
+      </style>
+      </div>
     </main>
 
     <!-- Footer -->

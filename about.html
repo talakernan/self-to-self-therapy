@@ -1,6 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <style>
+        @media (min-width: 900px) {
+          .site-2col {
+            position: relative;
+            min-height: 500px;
+            padding-top: 8rem !important;
+            align-items: flex-start !important;
+          }
+          .site-2col-right {
+            padding-top: 8rem !important;
+          }
+          .site-2col-right {
+            position: absolute !important;
+            left: 50vw !important;
+            top: 0;
+            transform: translateX(0);
+            min-width: 320px;
+            max-width: 600px;
+            width: 100%;
+          }
+          .site-2col-left {
+            max-width: 50vw !important;
+            padding-left: max(4vw, 32px) !important;
+          }
+        }
+        @media (max-width: 899px) {
+          .site-2col-left {
+            padding-left: max(2vw, 18px) !important;
+          }
+        }
+        @media (max-width: 899px) {
+          .site-2col {
+            flex-direction: column !important;
+            padding-top: 5rem !important;
+            align-items: flex-start !important;
+          }
+          .site-2col-right {
+            padding-top: 5rem !important;
+          }
+          .site-2col-right, .site-2col-left {
+            position: static !important;
+            max-width: 100% !important;
+            width: 100% !important;
+          }
+        }
+      </style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Amihan | Self to Self Therapy</title>
@@ -13,7 +59,7 @@
 </head>
 <body>
     <!-- Header -->
-    <header>
+    <header class="transparent-header">
         <nav>
             <a href="index.html" class="logo">
                 <img src="images/S2S_icon_transparent_small.svg" alt="Self to Self Therapy logo">
@@ -45,30 +91,30 @@
 
     <!-- Main Content -->
     <main>
-        <section>
-            <h1 class="page-title fade-in">About</h1>
-            <div class="about-content">
-                <div class="about-image fade-in delay-100">
-                    <div class="headshot-placeholder">
-                        <div class="headshot-icon">
-                            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <circle cx="12" cy="8" r="4" stroke="#4a5568" stroke-width="2"/>
-                                <path d="M4 20c0-3.3 3.6-6 8-6s8 2.7 8 6" stroke="#4a5568" stroke-width="2" stroke-linecap="round"/>
-                            </svg>
-                        </div>
-                       
-                    </div>
+      <div class="site-2col" style="display: flex; flex-direction: row; align-items: flex-start; width: 100%; max-width: 1400px; margin-left: 0; margin-right: auto; gap: 5rem; padding-left: max(1.5vw, 18px); padding-right: max(4vw, 32px); box-sizing: border-box;">
+        <div class="site-2col-left" style="flex: 1 1 0; max-width: 50%; box-sizing: border-box; font-size:1rem; margin: 0;">
+          <h1 class="page-title fade-in">About</h1>
+        </div>
+        <div class="site-2col-right" style="flex: 1 1 400px; max-width: 600px; min-width: 320px; box-sizing: border-box; font-size:1rem; margin: 0; position: absolute; left: 50vw; transform: translateX(0);">
+          <div class="about-content">
+            <div class="about-image fade-in delay-100">
+              <div class="headshot-placeholder">
+                <div class="headshot-icon">
+                  <svg width="64" height="64" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="12" cy="8" r="4" stroke="#4a5568" stroke-width="2"/>
+                    <path d="M4 20c0-3.3 3.6-6 8-6s8 2.7 8 6" stroke="#4a5568" stroke-width="2" stroke-linecap="round"/>
+                  </svg>
                 </div>
-                
-                <div class="about-text">
-                    <p class="slide-in delay-200">Are you feeling overwhelmed and disconnected from yourself? Do you find it challenging to navigate your experiences as an LGBTQIA+ person in today's world? Are you struggling to heal from trauma or grief? If any of these resonate with you, know that you're not alone and that there is hope for healing and growth. I provide virtual therapy to clients in Maryland, Washington DC, and Oregon.</p>
-                    
-                    <p class="slide-in delay-300">I'm trained in Internal Family Systems Therapy (Level 2). This is a unique approach that can help you understand and heal the wounded parts within yourself. I specialize in supporting teens, young adults, and adults who are part of the LGBTQIA+ community and those experiencing trauma and grief.</p>
-                    
-                    <p class="slide-in delay-400">In therapy, you'll have a safe space to connect with and understand yourself, challenge negative beliefs you may have about yourself, and change how you interact with the world. As a queer and Filipino-American therapist, I recognize that my identities shape how I experience and move through the world, as do yours. I work to create an affirming space.</p>
-                </div>
+              </div>
             </div>
-        </section>
+            <div class="about-text">
+              <p class="slide-in delay-200">Are you feeling overwhelmed and disconnected from yourself? Do you find it challenging to navigate your experiences as an LGBTQIA+ person in today's world? Are you struggling to heal from trauma or grief? If any of these resonate with you, know that you're not alone and that there is hope for healing and growth. I provide virtual therapy to clients in Maryland, Washington DC, and Oregon.</p>
+              <p class="slide-in delay-300">I'm trained in Internal Family Systems Therapy (Level 2). This is a unique approach that can help you understand and heal the wounded parts within yourself. I specialize in supporting teens, young adults, and adults who are part of the LGBTQIA+ community and those experiencing trauma and grief.</p>
+              <p class="slide-in delay-400">In therapy, you'll have a safe space to connect with and understand yourself, challenge negative beliefs you may have about yourself, and change how you interact with the world. As a queer and Filipino-American therapist, I recognize that my identities shape how I experience and move through the world, as do yours. I work to create an affirming space.</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </main>
 
     <!-- Footer -->
@@ -110,5 +156,6 @@
     </script>
     <script src="animation.js"></script>
     <script src="menu-fix.js"></script>
+    <script src="header-transparency.js"></script>
 </body>
 </html>

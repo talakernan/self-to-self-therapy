@@ -11,8 +11,65 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <style>
+        @media (min-width: 900px) {
+          .site-2col {
+            position: relative;
+            min-height: 500px;
+            padding-top: 8rem !important;
+            align-items: flex-start !important;
+          }
+          .site-2col-right {
+            padding-top: 8rem !important;
+          }
+        }
+        @media (max-width: 899px) {
+          .site-2col {
+            flex-direction: column !important;
+            padding-top: 5rem !important;
+            align-items: flex-start !important;
+          }
+          .site-2col-right {
+            padding-top: 5rem !important;
+          }
+        }
+        @media (min-width: 900px) {
+          .site-2col {
+            position: relative;
+            min-height: 500px;
+          }
+          .site-2col-right {
+            position: absolute !important;
+            left: 50vw !important;
+            top: 0;
+            transform: translateX(0);
+            min-width: 320px;
+            max-width: 600px;
+            width: 100%;
+          }
+          .site-2col-left {
+            max-width: 50vw !important;
+            padding-left: max(4vw, 32px) !important;
+          }
+        }
+        @media (max-width: 899px) {
+          .site-2col-left {
+            padding-left: max(2vw, 18px) !important;
+          }
+        }
+        @media (max-width: 899px) {
+          .site-2col {
+            flex-direction: column !important;
+          }
+          .site-2col-right, .site-2col-left {
+            position: static !important;
+            max-width: 100% !important;
+            width: 100% !important;
+          }
+        }
+      </style>
     <!-- Header -->
-    <header>
+    <header class="transparent-header">
         <nav>
             <a href="index.html" class="logo">
                 <img src="images/S2S_icon_transparent_small.svg" alt="Self to Self Therapy logo">
@@ -44,15 +101,18 @@
 
     <!-- Main Content -->
     <main>
-        <section>
-            <h1 class="page-title fade-in">Fees & Insurance</h1>
-            
-            <div class="fees-content">
-                 <p class="fade-in delay-200">My standard rate per 50-minute session is $150.</p>
-                <p class="fade-in delay-200">I do not accept insurance, but I can provide a superbill for you to submit to your insurance company as an out-of-network provider. Many health insurance companies will cover some percentage of the cost of therapy.</p>
-                <p class="fade-in delay-300">In some instances, I can provide sliding scale fees. Please inquire about your eligibility.</p>
-            </div>
-        </section>
+      <div class="site-2col" style="display: flex; flex-direction: row; align-items: flex-start; width: 100%; max-width: 1400px; margin-left: 0; margin-right: auto; gap: 5rem; padding-left: max(1.5vw, 18px); padding-right: max(4vw, 32px); box-sizing: border-box;">
+        <div class="site-2col-left" style="flex: 1 1 0; max-width: 50%; box-sizing: border-box; font-size:1rem; margin: 0;">
+          <h1 class="page-title fade-in">Fees & Insurance</h1>
+        </div>
+        <div class="site-2col-right" style="flex: 1 1 0; max-width: 50%; box-sizing: border-box; font-size:1rem; margin: 0;">
+          <div class="fees-content">
+            <p class="fade-in delay-200">My standard rate per 50-minute session is $150.</p>
+            <p class="fade-in delay-200">I do not accept insurance, but I can provide a superbill for you to submit to your insurance company as an out-of-network provider. Many health insurance companies will cover some percentage of the cost of therapy.</p>
+            <p class="fade-in delay-300">In some instances, I can provide sliding scale fees. Please inquire about your eligibility.</p>
+          </div>
+        </div>
+      </div>
     </main>
 
     <!-- Footer -->
