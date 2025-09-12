@@ -9,65 +9,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rethink+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="mobile-styles.css">
 </head>
 <body>
-    <style>
-        @media (min-width: 900px) {
-          .site-2col {
-            position: relative;
-            min-height: 500px;
-            padding-top: 8rem !important;
-            align-items: flex-start !important;
-          }
-          .site-2col-right {
-            padding-top: 8rem !important;
-          }
-        }
-        @media (max-width: 899px) {
-          .site-2col {
-            flex-direction: column !important;
-            padding-top: 5rem !important;
-            align-items: flex-start !important;
-          }
-          .site-2col-right {
-            padding-top: 5rem !important;
-          }
-        }
-        @media (min-width: 900px) {
-          .site-2col {
-            position: relative;
-            min-height: 500px;
-          }
-          .site-2col-right {
-            position: absolute !important;
-            left: 50vw !important;
-            top: 0;
-            transform: translateX(0);
-            min-width: 320px;
-            max-width: 600px;
-            width: 100%;
-          }
-          .site-2col-left {
-            max-width: 50vw !important;
-            padding-left: max(4vw, 32px) !important;
-          }
-        }
-        @media (max-width: 899px) {
-          .site-2col-left {
-            padding-left: max(2vw, 18px) !important;
-          }
-        }
-        @media (max-width: 899px) {
-          .site-2col {
-            flex-direction: column !important;
-          }
-          .site-2col-right, .site-2col-left {
-            position: static !important;
-            max-width: 100% !important;
-            width: 100% !important;
-          }
-        }
-      </style>
     <!-- Header -->
 
     <header class="transparent-header">
@@ -87,17 +31,9 @@
         </nav>
     </header>
 
-    <!-- Gradient Hero Container with Centered Page Title -->
-    <div class="homepage-hero-left">
-      <div class="hero-gradient-logo-wrap">
-        <img src="images/S2S_gradient_1.svg" alt="Hero gradient background" class="homepage-gradient-bg" />
-        <h1 class="homepage-hero-logo" style="text-align:center; font-size:2.5rem; font-weight:700; color:#3a2300; margin:0 auto;">Fees &amp; Insurance</h1>
-      </div>
-    </div>
-
     <!-- Mobile Menu Overlay -->
     <div class="mobile-menu-overlay" id="mobileMenuOverlay">
-        <button class="mobile-menu-close" id="mobileMenuClose"></button>
+        
         <ul class="mobile-menu-links">
             <li><a href="index.html">Home</a></li>
             <li><a href="about.html">About</a></li>
@@ -110,58 +46,29 @@
 
     <!-- Main Content -->
     <main>
-      <div class="site-2col" style="display: flex; flex-direction: row; align-items: flex-start; width: 100%; max-width: 1400px; margin-left: 0; margin-right: auto; gap: 5rem; padding-left: max(1.5vw, 18px); padding-right: max(4vw, 32px); box-sizing: border-box;">
-        <div class="site-2col-left" style="flex: 1 1 0; max-width: 50%; box-sizing: border-box; font-size:1rem; margin: 0;">
-          <h1 class="page-title fade-in">Fees & Insurance</h1>
+      <div class="homepage-split">
+        <div class="homepage-hero-left">
+          <div class="hero-gradient-logo-wrap">
+            <img src="images/S2S_gradient_1.svg" alt="Hero gradient background" class="homepage-gradient-bg" />
+            <h1 class="homepage-hero-logo" style="text-align:center; font-size:2.5rem; font-weight:700; color:#3a2300; margin:0 auto;">Fees &amp; Insurance</h1>
+          </div>
         </div>
-        <div class="site-2col-right" style="flex: 1 1 0; max-width: 50%; box-sizing: border-box; font-size:1rem; margin: 0;">
+        <div class="homepage-content-right">
+          <h1 class="page-title fade-in">Fees & Insurance</h1>
           <div class="fees-content">
             <p class="fade-in delay-200">My standard rate per 50-minute session is $150.</p>
             <p class="fade-in delay-200">I do not accept insurance, but I can provide a superbill for you to submit to your insurance company as an out-of-network provider. Many health insurance companies will cover some percentage of the cost of therapy.</p>
             <p class="fade-in delay-300">In some instances, I can provide sliding scale fees. Please inquire about your eligibility.</p>
           </div>
+          <footer class="fade-in">
+              <p>&copy; 2025 Self to Self Therapy. All rights reserved. | Licensed in Maryland, Washington DC, and Oregon</p>
+          </footer>
         </div>
       </div>
     </main>
 
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2025 Self to Self Therapy. All rights reserved. | Licensed in Maryland, Washington DC, and Oregon</p>
-    </footer>
-
-    <script>
-        // Mobile menu functionality
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
-        const mobileMenuClose = document.getElementById('mobileMenuClose');
-        const mobileMenuLinks = document.querySelectorAll('.mobile-menu-links a');
-
-        function openMobileMenu() {
-            mobileMenuOverlay.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeMobileMenu() {
-            mobileMenuOverlay.classList.remove('active');
-            document.body.style.overflow = 'auto';
-        }
-
-        mobileMenuBtn.addEventListener('click', openMobileMenu);
-        mobileMenuClose.addEventListener('click', closeMobileMenu);
-
-        // Close mobile menu when clicking on a link
-        mobileMenuLinks.forEach(link => {
-            link.addEventListener('click', closeMobileMenu);
-        });
-
-        // Close mobile menu when clicking outside
-        mobileMenuOverlay.addEventListener('click', function(e) {
-            if (e.target === mobileMenuOverlay) {
-                closeMobileMenu();
-            }
-        });
-    </script>
     <script src="animation.js"></script>
     <script src="menu-fix.js"></script>
+    <script src="header-transparency.js"></script>
 </body>
 </html>

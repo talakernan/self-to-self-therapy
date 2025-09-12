@@ -1,48 +1,65 @@
-// Mobile menu fix to ensure logo stays visible
+// Mobile menu functionality - hamburger button toggles between hamburger and X
 document.addEventListener('DOMContentLoaded', function() {
-    // Move the mobile menu overlay before the header in the DOM
-    // This will ensure proper stacking context
+    // Mobile menu functionality
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
     const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
-    const header = document.querySelector('header');
-    
-    if (mobileMenuOverlay && header) {
-        // Get the parent element
-        const parent = header.parentNode;
-        
-        // Insert the mobile menu overlay before the header
-        parent.insertBefore(mobileMenuOverlay, header);
-        
-        // Add a copy of the logo to the mobile menu overlay
-        const logo = document.querySelector('.logo');
-        if (logo) {
-            // Create a container for the logo in the mobile menu that matches the nav styling
-            const mobileNavContainer = document.createElement('div');
-            mobileNavContainer.className = 'mobile-menu-header';
-            mobileNavContainer.style.display = 'flex';
-            mobileNavContainer.style.justifyContent = 'space-between';
-            mobileNavContainer.style.width = '100%';
-            mobileNavContainer.style.padding = '2rem';
-            mobileNavContainer.style.position = 'absolute';
-            mobileNavContainer.style.top = '0';
-            
-            // Clone the logo and add it to the mobile menu
-            const logoClone = logo.cloneNode(true);
-            logoClone.className = 'logo mobile-logo';
-            
-            mobileNavContainer.appendChild(logoClone);
-            
-            // Move the close button to the container to position it properly
-            const closeButton = mobileMenuOverlay.querySelector('.mobile-menu-close');
-            if (closeButton) {
-                // Remove the old styles that position it absolutely
-                closeButton.style.position = 'relative';
-                closeButton.style.top = 'auto';
-                closeButton.style.right = 'auto';
-                mobileNavContainer.appendChild(closeButton);
+    const mobileMenuLinks = document.querySelectorAll('.mobile-menu-links a');
+
+    function toggleMobileMenu() {
+        if (mobileMenuOverlay) {
+            if (mobileMenuOverlay.classList.contains('active')) {
+                closeMobileMenu();
+            } else {
+                openMobileMenu();
             }
-            
-            // Insert the container at the top of the mobile menu
-            mobileMenuOverlay.insertBefore(mobileNavContainer, mobileMenuOverlay.firstChild);
         }
+    }
+
+    function openMobileMenu() {
+        if (mobileMenuOverlay) {
+            mobileMenuOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            if (mobileMenuBtn) {
+                mobileMenuBtn.innerHTML = '×';
+                mobileMenuBtn.style.fontSize = '1.8rem';
+                mobileMenuBtn.style.color = '#3a2300';
+            }
+        }
+    }
+
+    function closeMobileMenu() {
+        if (mobileMenuOverlay) {
+            mobileMenuOverlay.classList.remove('active');
+            document.body.style.overflow = 'auto';
+            if (mobileMenuBtn) {
+                mobileMenuBtn.innerHTML = '☰';
+                mobileMenuBtn.style.fontSize = '1.5rem';
+                mobileMenuBtn.style.color = '#3a2300';
+            }
+            // Show header logo again when mobile menu closes
+            const headerLogo = document.querySelector('header .logo');
+            if (headerLogo) {
+                headerLogo.style.visibility = 'visible';
+            }
+        }
+    }
+
+    // Event listeners
+    if (mobileMenuBtn) {
+        mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+    }
+
+    // Close mobile menu when clicking on a link
+    mobileMenuLinks.forEach(link => {
+        link.addEventListener('click', closeMobileMenu);
+    });
+
+    // Close mobile menu when clicking outside
+    if (mobileMenuOverlay) {
+        mobileMenuOverlay.addEventListener('click', function(e) {
+            if (e.target === mobileMenuOverlay) {
+                closeMobileMenu();
+            }
+        });
     }
 });

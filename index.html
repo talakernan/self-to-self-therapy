@@ -12,19 +12,6 @@
     <link rel="stylesheet" href="mobile-styles.css">
 </head>
 <body class="home">
-<script>
-(function() {
-    var password = prompt("Enter password to view site:");
-    if (password !== "sneak2peek") {
-        // Completely replace the page content
-        document.head.innerHTML = "<title>Site Coming Soon</title>";
-        document.body.innerHTML = "<h1>Site Coming Soon</h1><p>This site is currently under development.</p>";
-        // Disable all JavaScript and interactions
-        window.stop();
-        return false;
-    }
-})();
-</script>
     <!-- Header -->
     <header class="transparent-header">
         <nav>
@@ -45,7 +32,12 @@
 
     <!-- Mobile Menu Overlay -->
     <div class="mobile-menu-overlay" id="mobileMenuOverlay">
-        <button class="mobile-menu-close" id="mobileMenuClose"></button>
+        <div class="mobile-menu-header">
+            <a href="index.html" class="mobile-logo">
+                <img src="images/S2S_icon_transparent_small.svg" alt="Self to Self Therapy logo">
+                <span class="logo-text">SELF TO SELF THERAPY</span>
+            </a>
+        </div>
         <ul class="mobile-menu-links">
             <li><a href="index.html">Home</a></li>
             <li><a href="about.html">About</a></li>
@@ -75,11 +67,11 @@
 
           <div class="home-specialties-subhead slide-up" style="margin-top:0; margin-bottom:1rem; font-weight:700; font-size:1.5rem;">​Providing Individual therapy for:</div>
           <div class="home-specialties">
-            <p class="slide-up" style="margin-bottom:1.2em;"><strong>LGBTQIA+</strong><br><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque vitae velit ex.</span></p>
-            <p class="slide-up" style="margin-bottom:1.2em;"><strong>Anxiety</strong><br><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque vitae velit ex.</span></p>
-            <p class="slide-up" style="margin-bottom:1.2em;"><strong>Depression</strong><br><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque vitae velit ex.</span></p>
-            <p class="slide-up" style="margin-bottom:1.2em;"><strong>Grief and Loss</strong><br><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque vitae velit ex.</span></p>
-            <p class="slide-up" style="margin-bottom:1.2em;"><strong>Trauma</strong><br><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque vitae velit ex.</span></p>
+            <p class="slide-up" style="margin-bottom:1.2em;"><strong>LGBTQIA+</strong><br><span>Supporting identity exploration, coming out, and navigating challenges unique to LGBTQIA+ experiences.</span></p>
+            <p class="slide-up" style="margin-bottom:1.2em;"><strong>Anxiety</strong><br><span>Managing overwhelming worry, panic, and fear through evidence-based therapeutic approaches.</span></p>
+            <p class="slide-up" style="margin-bottom:1.2em;"><strong>Depression</strong><br><span>Working through feelings of sadness, hopelessness, and disconnection to find renewed purpose and joy.</span></p>
+            <p class="slide-up" style="margin-bottom:1.2em;"><strong>Grief and Loss</strong><br><span>Processing complex emotions and finding meaning after significant losses and life transitions.</span></p>
+            <p class="slide-up" style="margin-bottom:1.2em;"><strong>Trauma</strong><br><span>Healing from past experiences using Internal Family Systems and trauma-informed care.</span></p>
           </div>
           <a href="#" class="cta-button fade-in" style="margin: 2rem 0 1.5rem 0; align-self: flex-start;">Schedule a free consultation</a>
           <footer class="fade-in">
@@ -92,37 +84,6 @@
     <!-- Footer moved inside homepage-content-right -->
 
     <script>
-        // Mobile menu functionality
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
-        const mobileMenuClose = document.getElementById('mobileMenuClose');
-        const mobileMenuLinks = document.querySelectorAll('.mobile-menu-links a');
-
-        function openMobileMenu() {
-            mobileMenuOverlay.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeMobileMenu() {
-            mobileMenuOverlay.classList.remove('active');
-            document.body.style.overflow = 'auto';
-        }
-
-        mobileMenuBtn.addEventListener('click', openMobileMenu);
-        mobileMenuClose.addEventListener('click', closeMobileMenu);
-
-        // Close mobile menu when clicking on a link
-        mobileMenuLinks.forEach(link => {
-            link.addEventListener('click', closeMobileMenu);
-        });
-
-        // Close mobile menu when clicking outside
-        mobileMenuOverlay.addEventListener('click', function(e) {
-            if (e.target === mobileMenuOverlay) {
-                closeMobileMenu();
-            }
-        });
-
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {

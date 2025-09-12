@@ -16,16 +16,15 @@
 }
 @media (min-width: 601px) {
   .homepage-hero-left {
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 50vw;
+    grid-column: 1;
+    width: 100%;
     height: 100vh;
     min-width: 320px;
     min-height: 320px;
     background: none;
     z-index: 1;
     overflow: hidden;
+    position: relative;
   }
   .hero-gradient-logo-wrap {
     position: absolute;
@@ -58,6 +57,17 @@
     margin: 0 auto;
     display: block;
     pointer-events: auto;
+  }
+  
+  /* Style for text page titles on non-home pages */
+  .homepage-hero-logo[style*="font-size"] {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    max-height: none;
+    width: 100%;
+    max-width: 100%;
   }
 }
 @media (max-width: 600px) {
@@ -98,10 +108,12 @@
   }
   .homepage-content-right {
     margin-left: 0 !important;
-    width: 100vw !important;
+    width: 100% !important;
+    max-width: 90% !important;
+    margin: 0 auto !important;
     height: auto !important;
     min-height: 60vh !important;
-    padding: 2.5rem 5vw 2rem 5vw !important;
+    padding: 2rem 5% !important;
     overflow: visible !important;
     box-sizing: border-box !important;
     display: block !important;
@@ -152,19 +164,20 @@
 }
 /* Homepage split hero left, scrollable right layout */
 .homepage-split {
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   width: 100vw;
   height: 100vh;
   overflow: hidden;
+  position: relative;
 }
 
 .homepage-content-right {
-  margin-left: 50vw;
-  width: 50vw;
+  grid-column: 2;
   height: 100vh;
   overflow-y: auto;
-  padding: 8rem 7vw 3rem 7vw;
+  overflow-x: hidden;
+  padding: 8rem min(7vw, 3rem) 3rem min(7vw, 3rem);
   box-sizing: border-box;
   background: rgb(199, 232, 216);
   z-index: 2;
@@ -173,52 +186,62 @@
   justify-content: flex-start;
   align-items: flex-start;
   text-align: left;
-  overflow-x: hidden;
   position: relative;
 }
 
 .homepage-content-right::before {
   content: '';
-  position: fixed;
-  left: 50vw;
+  position: absolute;
   top: 0;
-  width: 50vw;
+  left: 0;
+  right: 0;
   height: 8rem;
   pointer-events: none;
   z-index: 10;
   background: linear-gradient(to bottom, rgb(199,232,216,1) 60%, rgb(199,232,216,0));
-  /* Adjust the color to match .homepage-content-right background */
 }
 
 .homepage-content-right footer {
   text-align: left;
   margin-left: 0;
   padding-left: 0;
-}
+  margin-top: auto;
 }
 @media (max-width: 900px) {
   .homepage-split {
-    flex-direction: column;
+    grid-template-columns: 1fr;
+    grid-template-rows: 40vh auto;
     height: auto;
   }
   .homepage-hero-left {
-    position: static;
-    width: 100vw;
+    grid-column: 1;
+    grid-row: 1;
+    width: 100%;
     height: 40vh;
     min-height: 220px;
   }
   .homepage-gradient-bg {
     position: absolute;
-    width: 100vw;
+    width: 100%;
     height: 40vh;
     min-height: 220px;
   }
   .homepage-content-right {
-    margin-left: 0;
-    width: 100vw;
+    grid-column: 1;
+    grid-row: 2;
+    width: 100%;
+    max-width: 90%;
+    margin: 0 auto;
     height: auto;
     min-height: 60vh;
-    padding: 2.5rem 5vw 2rem 5vw;
+    padding: 2rem 5%;
+  }
+}
+
+@media (max-width: 480px) {
+  .homepage-content-right {
+    padding: 1.5rem 3% !important;
+    max-width: 360px !important;
   }
 }
 @media (min-width: 900px) {
@@ -333,8 +356,29 @@ header {
     position: fixed;
     width: 100%;
     top: 0;
-    z-index: 2000;
-    transition: background-color 0.3s ease;
+    z-index: 2001;
+    transition: background-color 0.3s ease, backdrop-filter 0.3s ease;
+}
+
+/* Fade effect at bottom of header when scrolled */
+header.scrolled::after {
+    content: '';
+    position: absolute;
+    bottom: -20px;
+    left: 0;
+    right: 0;
+    height: 20px;
+    background: linear-gradient(to bottom, rgba(199, 232, 216, 0.3) 0%, transparent 100%);
+    pointer-events: none;
+    z-index: -1;
+}
+
+/* Desktop: only apply fade to right half */
+@media (min-width: 901px) {
+    header.scrolled::after {
+        left: 50%;
+        right: 0;
+    }
 }
 
 header.transparent-header {
@@ -435,14 +479,16 @@ nav {
     display: none;
     background: none;
     border: none;
-    color: #3a2300;
+    color: #3a2300 !important;
     font-size: 1.5rem;
     cursor: pointer;
-    transition: color 0.3s ease;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 2005;
 }
 
 .mobile-menu-btn:hover {
-    color: #76a58a;
+    color: #3a2300 !important;
 }
 
 /* Mobile Menu Overlay */
@@ -464,27 +510,33 @@ nav {
     transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
-/* Make sure the logo is visible in the mobile menu overlay */
-.mobile-menu-overlay.active ~ header .logo {
-    position: relative;
-    z-index: 2001; /* Higher than the overlay */
-}
 
-/* Fix to ensure logo is always visible when mobile menu is active */
-.mobile-menu-overlay.active + header .logo {
-    position: relative;
-    z-index: 2001; /* Higher than the overlay */
-}
-
-/* Alternative selector to ensure the logo remains visible */
+/* Show logo normally when mobile menu is not active */
 header .logo {
     position: relative;
-    z-index: 2001; /* Higher than the overlay */
+    z-index: 2001;
 }
 
 .mobile-menu-overlay.active {
     opacity: 1;
     visibility: visible;
+}
+
+/* Ensure mobile menu button stays visible and clickable above overlay */
+.mobile-menu-overlay.active ~ header .mobile-menu-btn {
+    color: #3a2300 !important;
+    z-index: 2010;
+    position: relative;
+}
+
+.mobile-menu-overlay.active ~ header .mobile-menu-btn:hover {
+    color: #3a2300 !important;
+}
+
+/* Ensure header stays above overlay when menu is active */
+.mobile-menu-overlay.active ~ header {
+    z-index: 2010;
+    position: relative;
 }
 
 .mobile-menu-links {
@@ -808,7 +860,6 @@ section {
 /* FAQ Section */
 .faq-item {
     margin-bottom: 2rem;
-    border-bottom: 1px solid #e2e8f0;
     padding-bottom: 1.5rem;
 }
 
