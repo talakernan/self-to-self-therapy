@@ -12,6 +12,23 @@
     <link rel="stylesheet" href="mobile-styles.css">
 </head>
 <body>
+<script>
+(function() {
+    var password = 'sneak2peek';
+    var enteredPassword = sessionStorage.getItem('sitePassword');
+    
+    if (enteredPassword !== password) {
+        var userPassword = prompt('Please enter the password to view this site:');
+        if (userPassword === password) {
+            sessionStorage.setItem('sitePassword', password);
+        } else {
+            alert('Incorrect password. Access denied.');
+            window.location.href = 'about:blank';
+            return;
+        }
+    }
+})();
+</script>
     <!-- Header -->
 
     <header class="transparent-header">
