@@ -8,21 +8,23 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rethink+Sans:wght@400;500;600;700&family=Lexend:wght@400&display=swap" rel="stylesheet">
+    <link rel="icon" href="images/S2S_icon_favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="images/S2S_icon_favicon.svg">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="mobile-styles.css">
 </head>
 <body class="home">
 <script>
 (function() {
+    if (localStorage.getItem("auth") === "ok") return;
     var password = prompt("Enter password to view site:");
     if (password !== "sneak2peek") {
-        // Completely replace the page content
         document.head.innerHTML = "<title>Site Coming Soon</title>";
         document.body.innerHTML = "<h1>Site Coming Soon</h1><p>This site is currently under development.</p>";
-        // Disable all JavaScript and interactions
         window.stop();
         return false;
     }
+    localStorage.setItem("auth", "ok");
 })();
 </script>
     <!-- Header -->
@@ -33,6 +35,7 @@
                 <span class="logo-text">SELF TO SELF THERAPY</span>
             </a>
             <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
                 <li><a href="about.html">About</a></li>
                 <li><a href="faq.html">FAQ</a></li>
                 <li><a href="fees.html">Fees</a></li>
@@ -45,7 +48,12 @@
 
     <!-- Mobile Menu Overlay -->
     <div class="mobile-menu-overlay" id="mobileMenuOverlay">
-        <button class="mobile-menu-close" id="mobileMenuClose"></button>
+        <div class="mobile-menu-header">
+            <a href="index.html" class="logo mobile-overlay-logo">
+                <img src="images/S2S_icon_transparent_small.svg" alt="Self to Self Therapy logo">
+            </a>
+            <button class="mobile-menu-close" id="mobileMenuClose">✕</button>
+        </div>
         <ul class="mobile-menu-links">
             <li><a href="index.html">Home</a></li>
             <li><a href="about.html">About</a></li>
@@ -58,38 +66,45 @@
 
     <!-- Main Content -->
     <main>
-      <div class="homepage-split">
-        <div class="homepage-hero-left">
-          <div class="hero-gradient-logo-wrap">
-            <img src="images/S2S_gradient_1.svg" alt="Hero gradient background" class="homepage-gradient-bg" />
-            <img src="images/S2S_icon_transparent_full.svg" alt="Self to Self Therapy full logo" class="homepage-hero-logo" />
+      <div class="logo-hero">
+        <img src="images/S2S_icon_transparent_full.svg" alt="Self to Self Therapy full logo" class="hero-logo-img">
+      </div>
+      <div class="content-card home-card">
+        <div class="home-card-columns">
+          <div class="home-card-left">
+            <p class="fade-in" style="margin-bottom:1.2em;">My dedication to tailoring treatment to your unique needs and ensuring that you are heard and understood is at the core of my vision for therapy.</p>
+            <p class="fade-in" style="margin-bottom:1.2em;">Grounded in empathy and cultural competence, my passion for therapy is the driving force behind my practice.</p>
+            <p class="fade-in" style="margin-bottom:1.2em;">In combination with my extensive education and training, it keeps me rooted in the latest, evidence-based practices, ensuring that I offer nothing less than the best possible services to my clients.</p>
+            <p class="fade-in" style="margin-bottom:1.2em;">My commitment goes beyond techniques; it extends to treating the whole person, addressing not just symptoms but the underlying factors that influence well-being.</p>
+            <p class="fade-in" style="margin-bottom:1.2em;">My vision is to empower individuals, celebrating their diverse backgrounds and identities, and helping them overcome challenges to lead healthier, more fulfilling lives.</p>
+            <a href="contact.html" class="cta-button fade-in" style="margin: 2rem 0 1.5rem 0; display: inline-block;">Schedule a free consultation</a>
           </div>
-        </div>
-        <div class="homepage-content-right">
-          <p class="fade-in" style="margin-bottom:1.2em;">Our dedication to tailoring treatment to your unique needs and ensuring that you are heard and understood is at the core of our vision for therapy.</p>
-          <p class="fade-in" style="margin-bottom:1.2em;">Grounded in empathy and cultural competence, our passion for therapy is the driving force behind our practice.</p>
-          <p class="fade-in" style="margin-bottom:1.2em;">In combination with our extensive education and training, it keeps us rooted in the latest, evidence-based practices, ensuring that we offer nothing less than the best possible services to our clients.</p>
-          <p class="fade-in" style="margin-bottom:1.2em;">Our commitment goes beyond techniques; it extends to treating the whole person, addressing not just symptoms but the underlying factors that influence well-being.</p>
-          <p class="fade-in" style="margin-bottom:1.2em;">Our vision is to empower individuals, celebrating their diverse backgrounds and identities, and helping them overcome challenges to lead healthier, more fulfilling lives.</p>
-
-
-          <div class="home-specialties-subhead slide-up" style="margin-top:0; margin-bottom:1rem; font-weight:700; font-size:1.5rem;">​Providing Individual therapy for:</div>
-          <div class="home-specialties">
-            <p class="slide-up" style="margin-bottom:1.2em;"><strong>LGBTQIA+</strong><br><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque vitae velit ex.</span></p>
-            <p class="slide-up" style="margin-bottom:1.2em;"><strong>Anxiety</strong><br><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque vitae velit ex.</span></p>
-            <p class="slide-up" style="margin-bottom:1.2em;"><strong>Depression</strong><br><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque vitae velit ex.</span></p>
-            <p class="slide-up" style="margin-bottom:1.2em;"><strong>Grief and Loss</strong><br><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque vitae velit ex.</span></p>
-            <p class="slide-up" style="margin-bottom:1.2em;"><strong>Trauma</strong><br><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque vitae velit ex.</span></p>
+          <div class="home-card-right">
+            <div class="home-specialties-subhead slide-up" style="margin-top:0; margin-bottom:1rem; font-weight:700; font-size:1.5rem;">​Providing Individual therapy for:</div>
+            <div class="home-specialties">
+              <p class="slide-up" style="margin-bottom:1.2em;"><strong>LGBTQIA+</strong><br><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque vitae velit ex.</span></p>
+              <p class="slide-up" style="margin-bottom:1.2em;"><strong>Trauma</strong><br><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque vitae velit ex.</span></p>
+              <p class="slide-up" style="margin-bottom:1.2em;"><strong>Grief and Loss</strong><br><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque vitae velit ex.</span></p>
+              <p class="slide-up" style="margin-bottom:1.2em;"><strong>Anxiety</strong><br><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque vitae velit ex.</span></p>
+              <p class="slide-up" style="margin-bottom:1.2em;"><strong>Depression</strong><br><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque vitae velit ex.</span></p>
+            </div>
+            <div class="headshot-placeholder fade-in" style="width:100%; height:300px; margin-top:1.5rem;">
+              <div class="headshot-icon">
+                <svg width="64" height="64" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="12" cy="8" r="4" stroke="#4a5568" stroke-width="2"/>
+                  <path d="M4 20c0-3.3 3.6-6 8-6s8 2.7 8 6" stroke="#4a5568" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+              </div>
+            </div>
           </div>
-          <a href="#" class="cta-button fade-in" style="margin: 2rem 0 1.5rem 0; align-self: flex-start;">Schedule a free consultation</a>
-          <footer class="fade-in">
-              <p>&copy; 2025 Self to Self Therapy. All rights reserved. | Licensed in Maryland, Washington DC, and Oregon</p>
-          </footer>
         </div>
       </div>
     </main>
 
-    <!-- Footer moved inside homepage-content-right -->
+    <!-- Footer -->
+    <footer>
+        <p>&copy; <span id="footer-year"></span> Self to Self Therapy. All rights reserved. | Licensed in Maryland, Washington DC, and Oregon</p>
+    </footer>
 
     <script>
         // Mobile menu functionality
@@ -137,9 +152,34 @@
             });
         });
     </script>
+    <script>
+        (function() {
+            var heroLogo = document.querySelector('.hero-logo-img');
+            var navLogo = document.querySelector('.logo');
+            var logoHero = document.querySelector('.logo-hero');
+
+            window.addEventListener('scroll', function() {
+                var scrollY = window.scrollY;
+                var heroHeight = logoHero ? logoHero.offsetHeight * 0.7 : window.innerHeight * 0.28;
+                var progress = Math.min(scrollY / heroHeight, 1);
+
+                if (heroLogo) {
+                    heroLogo.style.transform = 'translateY(' + (scrollY * 0.4) + 'px) scale(' + (1 - progress * 0.4) + ')';
+                    heroLogo.style.opacity = String(1 - progress);
+                }
+
+                if (navLogo) {
+                    navLogo.style.opacity = String(progress);
+                    navLogo.style.pointerEvents = progress > 0.5 ? 'auto' : 'none';
+                }
+            }, { passive: true });
+        })();
+    </script>
+    <script>document.getElementById("footer-year").textContent = new Date().getFullYear();</script>
     <script src="animation.js"></script>
     <script src="menu-fix.js"></script>
     <script src="header-transparency.js"></script>
     <script src="mobile-fade.js"></script>
+    <script src="card-fade.js"></script>
 </body>
 </html>

@@ -8,6 +8,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rethink+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="images/S2S_icon_favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="images/S2S_icon_favicon.svg">
     <link rel="stylesheet" href="styles.css">
 
 </head>
@@ -21,6 +23,7 @@
                 <span class="logo-text">SELF TO SELF THERAPY</span>
             </a>
             <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
                 <li><a href="about.html">About</a></li>
                 <li><a href="faq.html">FAQ</a></li>
                 <li><a href="fees.html">Fees</a></li>
@@ -31,17 +34,14 @@
         </nav>
     </header>
 
-    <!-- Gradient Hero Container with Centered Page Title -->
-    <div class="homepage-hero-left">
-      <div class="hero-gradient-logo-wrap">
-        <img src="images/S2S_gradient_1.svg" alt="Hero gradient background" class="homepage-gradient-bg" />
-        <h1 class="homepage-hero-logo" style="text-align:center; font-size:2.5rem; font-weight:700; color:#3a2300; margin:0 auto;">Contact</h1>
-      </div>
-    </div>
-
     <!-- Mobile Menu Overlay -->
     <div class="mobile-menu-overlay" id="mobileMenuOverlay">
-        <button class="mobile-menu-close" id="mobileMenuClose"></button>
+        <div class="mobile-menu-header">
+            <a href="index.html" class="logo mobile-overlay-logo">
+                <img src="images/S2S_icon_transparent_small.svg" alt="Self to Self Therapy logo">
+            </a>
+            <button class="mobile-menu-close" id="mobileMenuClose">✕</button>
+        </div>
         <ul class="mobile-menu-links">
             <li><a href="index.html">Home</a></li>
             <li><a href="about.html">About</a></li>
@@ -54,81 +54,26 @@
 
     <!-- Main Content -->
     <main>
-      <div class="site-2col" style="display: flex; flex-direction: row; align-items: flex-start; width: 100%; max-width: 1400px; margin-left: 0; margin-right: auto; gap: 5rem; padding-left: max(1.5vw, 18px); padding-right: max(4vw, 32px); box-sizing: border-box;">
-        <div class="site-2col-left" style="flex: 1 1 0; max-width: 50%; box-sizing: border-box; font-size:1rem; margin: 0;">
-          <h1 class="page-title">Get in touch</h1>
-        </div>
-        <div class="site-2col-right" style="flex: 1 1 400px; max-width: 600px; min-width: 320px; box-sizing: border-box; font-size:1rem; margin: 0; position: absolute; left: 50vw; transform: translateX(0);">
-          <div class="contact-content" style="display: flex; flex-direction: column; gap: 1.5em;">
-            <p><strong>Email:</strong> <a href="mailto:ami@selftoselftherapy.com">ami@selftoselftherapy.com</a></p>
-            <p><strong>Phone:</strong> <a href="tel:+12026180138">(202) 618-0138</a></p>
-            <p><strong>Serving:</strong> Maryland, Washington DC, and Oregon</p>
-            <p><strong>Format:</strong> Virtual sessions only</p>
+      <div class="content-card" style="margin-top: 7rem;">
+        <div class="home-card-columns">
+          <div class="home-card-left">
+            <h1 class="page-title fade-in">Get in touch</h1>
+          </div>
+          <div class="home-card-right">
+            <div class="contact-content" style="display: flex; flex-direction: column; gap: 1.5em;">
+              <p><strong>Email:</strong> <a href="mailto:ami@selftoselftherapy.com">ami@selftoselftherapy.com</a></p>
+              <p><strong>Phone:</strong> <a href="tel:+12026180138">(202) 618-0138</a></p>
+              <p><strong>Serving:</strong> Maryland, Washington DC, and Oregon</p>
+              <p><strong>Format:</strong> Virtual sessions only</p>
+            </div>
           </div>
         </div>
       </div>
-      <style>
-        @media (min-width: 900px) {
-          .site-2col {
-            position: relative;
-            min-height: 500px;
-            padding-top: 8rem !important;
-            align-items: flex-start !important;
-          }
-          .site-2col-right {
-            padding-top: 8rem !important;
-          }
-        }
-        @media (max-width: 899px) {
-          .site-2col {
-            flex-direction: column !important;
-            padding-top: 5rem !important;
-            align-items: flex-start !important;
-          }
-          .site-2col-right {
-            padding-top: 5rem !important;
-          }
-        }
-        @media (min-width: 900px) {
-          .site-2col {
-            position: relative;
-            min-height: 500px;
-          }
-          .site-2col-right {
-            position: absolute !important;
-            left: 50vw !important;
-            top: 0;
-            transform: translateX(0);
-            min-width: 320px;
-            max-width: 600px;
-            width: 100%;
-          }
-          .site-2col-left {
-            max-width: 50vw !important;
-            padding-left: max(4vw, 32px) !important;
-          }
-        }
-        @media (max-width: 899px) {
-          .site-2col-left {
-            padding-left: max(2vw, 18px) !important;
-          }
-        }
-        @media (max-width: 899px) {
-          .site-2col {
-            flex-direction: column !important;
-          }
-          .site-2col-right, .site-2col-left {
-            position: static !important;
-            max-width: 100% !important;
-            width: 100% !important;
-          }
-        }
-      </style>
     </main>
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2025 Self to Self Therapy. All rights reserved. | Licensed in Maryland, Washington DC, and Oregon</p>
+        <p>&copy; <span id="footer-year"></span> Self to Self Therapy. All rights reserved. | Licensed in Maryland, Washington DC, and Oregon</p>
     </footer>
 
     <script>
@@ -164,6 +109,8 @@
         });
     </script>
     <script src="animation.js"></script>
+    <script>document.getElementById("footer-year").textContent = new Date().getFullYear();</script>
     <script src="menu-fix.js"></script>
+    <script src="card-fade.js"></script>
 </body>
 </html>

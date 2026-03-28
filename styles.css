@@ -226,14 +226,6 @@
     margin-left: max(132px, 1.5vw) !important;
   }
 }
-footer {
-  text-align: left;
-  font-size: 0.75em;
-  font-weight: 300;
-  color: #c7e8d8;
-  margin-left: max(132px, 1.5vw);
-  padding-left: 0;
-}
 /* Home 2-column layout */
 .home-2col {
   display: flex;
@@ -342,6 +334,7 @@ header.transparent-header {
     box-shadow: none !important;
 }
 
+
 nav {
     width: 100%;
     margin: 0;
@@ -412,37 +405,53 @@ nav {
     text-decoration: none;
     font-weight: 500;
     transition: color 0.3s ease;
+    position: relative;
+    z-index: 0;
+}
+
+.nav-links a::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255, 174, 174, 0.5) 0%, transparent 70%);
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.nav-links a:hover::before {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
 }
 
 .nav-links a:hover {
-    color: #76a58a;
+    color: #3a2300;
 }
 
-.portal-nav-link {
-    background: none !important;
-    color: #3a2300 !important;
-    padding: 0 !important;
-    border-radius: 0 !important;
-    transition: color 0.3s ease !important;
-    font-weight: 500 !important;
-}
 .portal-nav-link:hover {
-    background: none !important;
-    color: #76a58a !important;
+    color: #3a2300;
 }
 
 .mobile-menu-btn {
     display: none;
     background: none;
     border: none;
+    padding: 0;
     color: #3a2300;
     font-size: 1.5rem;
+    line-height: 1;
     cursor: pointer;
     transition: color 0.3s ease;
 }
 
 .mobile-menu-btn:hover {
-    color: #76a58a;
+    color: rgba(58, 35, 0, 0.75);
 }
 
 /* Mobile Menu Overlay */
@@ -455,31 +464,12 @@ nav {
     background: #c7e8d8;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start; /* Changed from center to flex-start for top alignment */
-    padding-top: 6rem; /* Add padding to push content down */
+    justify-content: flex-start;
     align-items: center;
-    z-index: 2000;
+    z-index: 3000;
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.3s ease, visibility 0.3s ease;
-}
-
-/* Make sure the logo is visible in the mobile menu overlay */
-.mobile-menu-overlay.active ~ header .logo {
-    position: relative;
-    z-index: 2001; /* Higher than the overlay */
-}
-
-/* Fix to ensure logo is always visible when mobile menu is active */
-.mobile-menu-overlay.active + header .logo {
-    position: relative;
-    z-index: 2001; /* Higher than the overlay */
-}
-
-/* Alternative selector to ensure the logo remains visible */
-header .logo {
-    position: relative;
-    z-index: 2001; /* Higher than the overlay */
 }
 
 .mobile-menu-overlay.active {
@@ -487,13 +477,50 @@ header .logo {
     visibility: visible;
 }
 
+/* Overlay header — mirrors the nav layout exactly */
+.mobile-menu-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    padding: 2rem 1.75rem;
+    box-sizing: border-box;
+    flex-shrink: 0;
+}
+
+/* Always show the logo inside the overlay, even on the home page */
+.mobile-overlay-logo {
+    opacity: 1 !important;
+    pointer-events: auto !important;
+}
+
+.mobile-menu-close {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #3a2300;
+    padding: 0;
+    line-height: 1;
+    transition: color 0.3s ease;
+}
+
+.mobile-menu-close:hover {
+    color: rgba(58, 35, 0, 0.75);
+}
+
 .mobile-menu-links {
     list-style: none;
     text-align: left;
     width: 100%;
     max-width: 340px;
+    padding: 0 2rem;
+    box-sizing: border-box;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     margin: 0 auto;
-    padding: 0;
 }
 
 .mobile-menu-links li {
@@ -517,28 +544,9 @@ header .logo {
 }
 
 .mobile-menu-links a:hover {
-    color: #76a58a;
+    color: rgba(58, 35, 0, 0.75);
 }
 
-.mobile-menu-close {
-    position: absolute;
-    top: 1rem;
-    left: 50%;
-    transform: translateX(-50%);
-    max-width: 1800px;
-    width: 100%;
-    padding: 0 2rem;
-    display: flex;
-    justify-content: flex-end;
-    top: 1.2rem;
-    right: 2rem;
-    background: none;
-    border: none;
-    font-size: 2rem;
-    cursor: pointer;
-    color: #3a2300;
-    transition: color 0.3s ease;
-}
 
 /* Position the X icon in the same place as hamburger icon for mobile */
 @media (max-width: 768px) {
@@ -548,6 +556,10 @@ header .logo {
 
     .mobile-menu-btn {
         display: block;
+    }
+
+    nav {
+        padding: 2rem 1.75rem;
     }
 
     .hero h1 {
@@ -588,39 +600,28 @@ header .logo {
     }
 
     nav {
-        padding: 1.5rem; /* Equal padding to 1.5rem */
+        padding: 1.5rem 1.75rem;
     }
 
     .mobile-menu-links a {
         font-size: 1.25rem;
     }
 
-    .mobile-menu-close {
-        top: 1.5rem; /* Match nav padding on mobile */
-        right: 1.5rem; /* Match nav padding on mobile */
-    }
-  
-    .mobile-menu-close::after {
-      content: '×';
-    }
-
-    .mobile-menu-close:hover {
-      color: #76a58a;
-    }
-    
     footer {
         padding: 1.5rem; /* Updated padding to match */
     }
 }
 
-/* Hide nav logo on home page only */
+/* Hide nav logo on home page only — opacity so JS can fade it in */
 body.home .logo {
-  display: none !important;
+  opacity: 0;
+  pointer-events: none;
+  transition: none;
 }
 
-/* Right-align nav on home page only */
+/* Keep nav spaced so logo occupies its position while invisible */
 body.home nav {
-  justify-content: flex-end !important;
+  justify-content: space-between !important;
 }
 
 /* Main Content */
@@ -715,7 +716,7 @@ main {
 }
 
 .cta-button:hover {
-    background: #76a58a;
+    background: rgba(58, 35, 0, 0.65);
 }
 
 /* Sections */
@@ -885,14 +886,13 @@ section {
 
 /* Footer */
 footer {
-    /* Removed background color and border */
     background: transparent;
     border-top: none;
     text-align: center;
     padding: 1.5rem;
     margin-top: 4rem;
-    color: #76a58a; /* Lighter color for more discrete appearance */
-    font-size: 0.9rem; /* Smaller font size */
+    color: rgba(58, 35, 0, 0.55);
+    font-size: 0.9rem;
     font-weight: 300;
 }
 
@@ -1022,19 +1022,129 @@ footer {
     }
 
     nav {
-        padding: 1.5rem; /* Equal padding to 1.5rem */
+        padding: 1.5rem 1.75rem;
+    }
+
+    .mobile-menu-header {
+        padding: 1.5rem 1.75rem;
     }
 
     .mobile-menu-links a {
         font-size: 1.25rem;
     }
 
-    .mobile-menu-close {
-        top: 1.5rem; /* Match nav padding on mobile */
-        right: 1.5rem; /* Match nav padding on mobile */
-    }
-    
     footer {
-        padding: 1.5rem; /* Updated padding to match */
+        padding: 1.5rem;
+    }
+}
+
+/* === Option B Layout: Full-page gradient background + content card === */
+
+body {
+    background-image: url('images/S2S_gradient_1.svg');
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+}
+
+/* Home page: logo hero */
+.logo-hero {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40vh;
+    padding-top: 5rem;
+    box-sizing: border-box;
+}
+
+.hero-logo-img {
+    max-width: 240px;
+    width: 44vw;
+    height: auto;
+    display: block;
+    will-change: transform;
+}
+
+/* Card top fade overlay */
+.card-top-fade {
+    position: fixed;
+    top: 0;
+    height: 7.5rem;
+    background: linear-gradient(to bottom, rgb(199, 232, 216) 0%, rgb(199, 232, 216) 2.75rem, transparent 100%);
+    pointer-events: none;
+    z-index: 1500;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    border-radius: 0 0 0 0;
+}
+
+/* Content card (all pages) */
+.content-card {
+    background: rgba(199, 232, 216, 0.92);
+    max-width: 75vw;
+    margin: 0 auto 4rem;
+    padding: 3rem 3.5rem;
+    border-radius: 12px;
+    position: relative;
+    z-index: 2;
+}
+
+/* Home card two-column layout */
+.home-card-columns {
+    display: flex;
+    gap: 3rem;
+    align-items: flex-start;
+}
+
+.home-card-left {
+    flex: 1;
+    min-width: 0;
+}
+
+.home-card-right {
+    flex: 1;
+    min-width: 0;
+}
+
+/* Decorative line before first paragraph in home card right column */
+.home-card-right > p:first-of-type {
+    position: relative;
+    padding-top: 2.2em;
+}
+
+.home-card-right > p:first-of-type::before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: #3a2300;
+    border-radius: 2px;
+}
+
+@media (max-width: 768px) {
+    .content-card {
+        width: 90%;
+        max-width: 90vw;
+        margin: 0 auto 3rem;
+        padding: 2rem 1.5rem;
+        border-radius: 8px;
+    }
+
+    .logo-hero {
+        height: 50vh;
+        padding-top: 6rem;
+        box-sizing: border-box;
+    }
+
+    .hero-logo-img {
+        max-width: 182px;
+        width: 52vw;
+    }
+
+    .home-card-columns {
+        flex-direction: column;
     }
 }
