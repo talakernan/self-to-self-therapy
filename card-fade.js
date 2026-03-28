@@ -8,9 +8,11 @@
 
     function update() {
         var rect = card.getBoundingClientRect();
+        var show = rect.top <= 0;
         overlay.style.left = rect.left + 'px';
         overlay.style.width = rect.width + 'px';
-        overlay.style.opacity = rect.top <= 0 ? '1' : '0';
+        overlay.style.transition = show ? 'opacity 0.3s ease' : 'none';
+        overlay.style.opacity = show ? '1' : '0';
     }
 
     window.addEventListener('scroll', update, { passive: true });
