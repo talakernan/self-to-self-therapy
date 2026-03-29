@@ -299,6 +299,10 @@
     box-sizing: border-box;
 }
 
+a {
+    color: #3a2300;
+}
+
 html, body {
     height: 100%;
     margin: 0;
@@ -308,7 +312,7 @@ html, body {
 
 body {
     font-family: 'Rethink Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-    line-height: 1.6;
+    line-height: 1.44;
     color: #3a2300;
     background-color: #c7e8d8;
     font-size: 17px;
@@ -404,9 +408,10 @@ nav {
     color: #3a2300;
     text-decoration: none;
     font-weight: 500;
-    transition: color 0.3s ease;
+    transition: color 0.3s ease, transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
     position: relative;
     z-index: 0;
+    display: inline-block;
 }
 
 .nav-links a::before {
@@ -432,10 +437,12 @@ nav {
 
 .nav-links a:hover {
     color: #3a2300;
+    transform: scale(1.03);
 }
 
 .portal-nav-link:hover {
     color: #3a2300;
+    transform: scale(1.03);
 }
 
 .mobile-menu-btn {
@@ -447,11 +454,12 @@ nav {
     font-size: 1.5rem;
     line-height: 1;
     cursor: pointer;
-    transition: color 0.3s ease;
+    transition: color 0.3s ease, transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .mobile-menu-btn:hover {
     color: rgba(58, 35, 0, 0.75);
+    transform: scale(1.03);
 }
 
 /* Mobile Menu Overlay */
@@ -502,11 +510,12 @@ nav {
     color: #3a2300;
     padding: 0;
     line-height: 1;
-    transition: color 0.3s ease;
+    transition: color 0.3s ease, transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .mobile-menu-close:hover {
     color: rgba(58, 35, 0, 0.75);
+    transform: scale(1.03);
 }
 
 .mobile-menu-links {
@@ -538,13 +547,14 @@ nav {
     text-decoration: none;
     font-size: 1.5rem;
     font-weight: 500;
-    transition: color 0.3s ease;
-    display: block;
+    transition: color 0.3s ease, transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+    display: inline-block;
     padding: 0;
 }
 
 .mobile-menu-links a:hover {
     color: rgba(58, 35, 0, 0.75);
+    transform: scale(1.03);
 }
 
 
@@ -694,7 +704,7 @@ main {
     max-width: 700px; /* Reduced from 800px to maintain proportion with container */
     margin: 0 auto 1.5rem;
     color: #3a2300;
-    line-height: 1.6;
+    line-height: 1.44;
 }
 
 .hero .therapist-name {
@@ -712,11 +722,16 @@ main {
     text-decoration: none;
     font-weight: 600;
     transition: background-color 0.3s ease;
-    border-radius: 4px;
+    border-radius: 12px;
 }
 
-.cta-button:hover {
-    background: rgba(58, 35, 0, 0.65);
+.cta-button span {
+    display: inline-block;
+    transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.cta-button:hover span {
+    transform: scale(1.03);
 }
 
 /* Sections */
@@ -728,7 +743,7 @@ section {
 }
 
 .page-title {
-    font-size: 2rem;
+    font-size: 2.6rem;
     margin-bottom: 3rem;
     color: #3a2300;
     font-weight: 500;
@@ -796,7 +811,7 @@ section {
 
 .about-text {
     font-size: 1.1rem;
-    line-height: 1.7;
+    line-height: 1.53;
     color: #3a2300;
     text-align: left;
     width: 100%;
@@ -809,7 +824,6 @@ section {
 /* FAQ Section */
 .faq-item {
     margin-bottom: 2rem;
-    border-bottom: 1px solid #e2e8f0;
     padding-bottom: 1.5rem;
 }
 
@@ -823,13 +837,13 @@ section {
 .faq-answer {
     font-size: 1.1rem;
     color: #3a2300;
-    line-height: 1.7;
+    line-height: 1.53;
 }
 
 /* Fees Section */
 .fees-content {
     font-size: 1.1rem;
-    line-height: 1.7;
+    line-height: 1.53;
     color: #3a2300;
     max-width: 700px; /* Reduced from 800px to maintain proportion with container */
     text-align: left;
@@ -880,8 +894,168 @@ section {
     font-weight: 500;
 }
 
+.contact-info a {
+    transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+    display: inline-block;
+}
+
 .contact-info a:hover {
     text-decoration: underline;
+    transform: scale(1.03);
+}
+
+/* About IFS page */
+.ifs-section {
+    margin-bottom: 2.5rem;
+}
+
+.ifs-subhead {
+    font-size: 1.5rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    margin-bottom: 0.75rem;
+}
+
+.ifs-subhead-minor {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.ifs-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.ifs-list li {
+    padding-left: 0;
+}
+
+/* Contact Form */
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 2.75rem;
+}
+
+.contact-form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+}
+
+.contact-form-field label {
+    font-weight: 600;
+    font-size: 1rem;
+    color: #3a2300;
+}
+
+.contact-form-optional {
+    font-weight: 400;
+    opacity: 0.6;
+    font-size: 0.85em;
+}
+
+.contact-form-required {
+    color: #c0392b;
+    font-weight: 600;
+}
+
+.contact-form-field input[type="text"],
+.contact-form-field input[type="email"],
+.contact-form-field input[type="tel"],
+.contact-form-field select,
+.contact-form-field textarea {
+    font-family: inherit;
+    font-size: 1rem;
+    color: #3a2300;
+    background: transparent;
+    border: none;
+    border-bottom: 1.5px solid #3a2300;
+    border-radius: 0;
+    padding: 0.5rem 0;
+    outline: none;
+    transition: border-color 0.2s ease;
+    appearance: none;
+    -webkit-appearance: none;
+    width: 100%;
+    box-sizing: border-box;
+    resize: none;
+}
+
+.contact-form-field input:focus,
+.contact-form-field select:focus,
+.contact-form-field textarea:focus {
+    border-bottom-color: #3a2300;
+}
+
+.contact-form-field input::placeholder,
+.contact-form-field textarea::placeholder {
+    color: #5a9e84;
+}
+
+.contact-form-checkboxes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.25rem;
+    margin-top: 0.15rem;
+}
+
+.contact-form-checkbox,
+.contact-form-field .contact-form-checkbox {
+    font-weight: 400 !important;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    cursor: pointer;
+}
+
+.contact-form-checkbox input[type="checkbox"] {
+    width: 1rem;
+    height: 1rem;
+    cursor: pointer;
+    flex-shrink: 0;
+    appearance: none;
+    -webkit-appearance: none;
+    background: #e3f4ec;
+    border: none;
+    border-radius: 3px;
+    position: relative;
+    transition: background 0.15s ease;
+}
+
+.contact-form-checkbox input[type="checkbox"]:checked {
+    background: transparent;
+}
+
+.contact-form-checkbox input[type="checkbox"]:checked::after {
+    content: '';
+    position: absolute;
+    left: 2px;
+    top: -1px;
+    width: 6px;
+    height: 10.5px;
+    border: 2px solid #3a2300;
+    border-top: none;
+    border-left: none;
+    transform: rotate(45deg);
+}
+
+.contact-form-thankyou {
+    font-size: 1.1rem;
+    line-height: 1.53;
+    color: #3a2300;
+}
+
+.contact-form-error {
+    font-size: 0.95rem;
+    color: #c0392b;
+    margin-top: 1rem;
 }
 
 /* Footer */

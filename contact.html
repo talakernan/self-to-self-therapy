@@ -28,7 +28,7 @@
                 <li><a href="faq.html">FAQ</a></li>
                 <li><a href="fees.html">Fees</a></li>
                 <li><a href="contact.html">Contact</a></li>
-                <li><a href="#" class="portal-nav-link">Client Portal</a></li>
+                <li><a href="#" class="portal-nav-link">Client portal</a></li>
             </ul>
             <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
         </nav>
@@ -48,7 +48,7 @@
             <li><a href="faq.html">FAQ</a></li>
             <li><a href="fees.html">Fees</a></li>
             <li><a href="contact.html">Contact</a></li>
-            <li><a href="#" class="portal-nav-link">Client Portal</a></li>
+            <li><a href="#" class="portal-nav-link">Client portal</a></li>
         </ul>
     </div>
 
@@ -58,13 +58,49 @@
         <div class="home-card-columns">
           <div class="home-card-left">
             <h1 class="page-title fade-in">Get in touch</h1>
+            <p class="fade-in" style="margin-bottom: 1.5rem;"><strong>Contact me directly or fill out the form to get in touch.</strong></p>
+            <div class="contact-content fade-in" style="display: flex; flex-direction: column; gap: 1.5em;">
+              <p><a href="mailto:ami@selftoselftherapy.com">ami@selftoselftherapy.com</a></p>
+              <p><a href="tel:+12026180138">(202) 618-0138</a></p>
+              <p>Serving Maryland, Washington DC, and Oregon</p>
+            </div>
           </div>
           <div class="home-card-right">
-            <div class="contact-content" style="display: flex; flex-direction: column; gap: 1.5em;">
-              <p><strong>Email:</strong> <a href="mailto:ami@selftoselftherapy.com">ami@selftoselftherapy.com</a></p>
-              <p><strong>Phone:</strong> <a href="tel:+12026180138">(202) 618-0138</a></p>
-              <p><strong>Serving:</strong> Maryland, Washington DC, and Oregon</p>
-              <p><strong>Format:</strong> Virtual sessions only</p>
+            <form class="contact-form fade-in" action="https://formspree.io/f/xpqopwjw" method="POST">
+              <div class="contact-form-field">
+                <label for="name">Name <span class="contact-form-required">*</span></label>
+                <input type="text" id="name" name="name" required placeholder="Your full name">
+              </div>
+              <div class="contact-form-field">
+                <label for="email">Email <span class="contact-form-required">*</span></label>
+                <input type="email" id="email" name="email" required placeholder="you@example.com">
+              </div>
+              <div class="contact-form-field">
+                <label for="phone">Phone</label>
+                <input type="tel" id="phone" name="phone" placeholder="(000) 000-0000">
+              </div>
+              <div class="contact-form-field">
+                <label>Availability <span class="contact-form-optional">(select all that apply)</span></label>
+                <div class="contact-form-checkboxes">
+                  <label class="contact-form-checkbox"><input type="checkbox" name="availability" value="Mornings"> Mornings</label>
+                  <label class="contact-form-checkbox"><input type="checkbox" name="availability" value="Afternoons"> Afternoons</label>
+                  <label class="contact-form-checkbox"><input type="checkbox" name="availability" value="Evenings"> Evenings</label>
+                  <label class="contact-form-checkbox"><input type="checkbox" name="availability" value="Weekends"> Weekends</label>
+                </div>
+              </div>
+              <div class="contact-form-field">
+                <label for="referral">How did you hear about us?</label>
+                <input type="text" id="referral" name="referral" placeholder="e.g. Google, referral, social media…">
+              </div>
+              <div class="contact-form-field">
+                <label for="message">Anything else you'd like us to know?</label>
+                <textarea id="message" name="message" rows="4" placeholder="Share anything that feels relevant — what brings you to therapy, questions you have, or anything else on your mind."></textarea>
+              </div>
+              <button type="submit" class="cta-button" style="margin-top: 0.5rem;"><span>Send message</span></button>
+              <p class="contact-form-error" id="formError" style="display:none;">Something went wrong — please try emailing us directly at <a href="mailto:ami@selftoselftherapy.com">ami@selftoselftherapy.com</a></p>
+            </form>
+            <div class="contact-form-thankyou" id="formThankyou" style="display:none;">
+              <p>Thank you for reaching out! Ami will be in touch within 1–2 business days.</p>
             </div>
           </div>
         </div>
@@ -75,6 +111,35 @@
     <footer>
         <p>&copy; <span id="footer-year"></span> Self to Self Therapy. All rights reserved. | Licensed in Maryland, Washington DC, and Oregon</p>
     </footer>
+
+    <script>
+        // Contact form async submission
+        const contactForm = document.querySelector('.contact-form');
+        const formError = document.getElementById('formError');
+        const formThankyou = document.getElementById('formThankyou');
+
+        contactForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            formError.style.display = 'none';
+
+            try {
+                const response = await fetch(contactForm.action, {
+                    method: 'POST',
+                    body: new FormData(contactForm),
+                    headers: { 'Accept': 'application/json' }
+                });
+
+                if (response.ok) {
+                    contactForm.style.display = 'none';
+                    formThankyou.style.display = 'block';
+                } else {
+                    formError.style.display = 'block';
+                }
+            } catch {
+                formError.style.display = 'block';
+            }
+        });
+    </script>
 
     <script>
         // Mobile menu functionality
