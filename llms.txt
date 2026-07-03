@@ -44,7 +44,7 @@
 
 ## Key pages
 
-- [Home](https://selftoselftherapy.com/home.html): Overview of practice
+- [Home](https://selftoselftherapy.com/): Overview of practice
 - [About Ami](https://selftoselftherapy.com/about.html): Ami's background and approach
 - [About IFS](https://selftoselftherapy.com/about-ifs.html): What Internal Family Systems therapy is
 - [FAQ](https://selftoselftherapy.com/faq.html): Consultations, telehealth, session length, frequency, expectations
