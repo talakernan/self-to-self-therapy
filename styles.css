@@ -1259,11 +1259,17 @@ footer {
 
 /* === Option B Layout: Full-page gradient background + content card === */
 
-body {
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     background-image: url('images/S2S_gradient_1.svg');
-    background-attachment: fixed;
     background-size: cover;
     background-position: center;
+    z-index: -1;
 }
 
 /* Ami Kernan, LICSW credential line under photo / above contact */
@@ -1307,14 +1313,7 @@ body.page-contact .photo-credential {
     display: none;
 }
 
-/* Inner pages: remove direct background, use ::before for rotation/zoom variance */
-body.page-about,
-body.page-faq,
-body.page-fees,
-body.page-contact {
-    background-image: none;
-}
-
+/* Inner pages: override the base body::before with rotation/zoom variance */
 body.page-about::before,
 body.page-faq::before,
 body.page-fees::before,
