@@ -14,19 +14,6 @@
     <link rel="stylesheet" href="mobile-styles.css">
 </head>
 <body>
-<script>
-(function() {
-    if (localStorage.getItem("auth") === "ok") return;
-    var password = prompt("Enter password to view site:");
-    if (password !== "sneak2peek") {
-        document.head.innerHTML = "<title>Site Coming Soon</title>";
-        document.body.innerHTML = "<h1>Site Coming Soon</h1><p>This site is currently under development.</p>";
-        window.stop();
-        return false;
-    }
-    localStorage.setItem("auth", "ok");
-})();
-</script>
     <!-- Header -->
     <header class="transparent-header">
         <nav>
