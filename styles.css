@@ -1069,6 +1069,51 @@ footer {
     font-weight: 300;
 }
 
+/* Accessibility: skip link, focus states, reduced motion */
+.skip-link {
+    position: absolute;
+    top: -100px;
+    left: 1rem;
+    background: #3a2300;
+    color: #fff;
+    padding: 0.75rem 1.25rem;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 500;
+    z-index: 2000;
+    transition: top 0.2s ease;
+}
+
+.skip-link:focus {
+    top: 1rem;
+    outline: 2px solid #fff;
+    outline-offset: 2px;
+}
+
+:focus-visible {
+    outline: 2px solid #3a2300;
+    outline-offset: 2px;
+    border-radius: 2px;
+}
+
+.cta-button:focus-visible,
+.mobile-menu-btn:focus-visible,
+.mobile-menu-close:focus-visible {
+    outline: 2px solid #3a2300;
+    outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
 /* Animation Keyframes */
 @keyframes fadeIn {
     from { opacity: 0; }
