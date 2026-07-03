@@ -1265,41 +1265,17 @@ body {
     background-position: center;
 }
 
-/* What I offer accordion */
-.what-i-offer-toggle {
-    display: flex;
-    align-items: center;
-    gap: 0.4em;
-    background: transparent;
-    background-color: transparent;
-    border: none;
-    border-radius: 0;
-    padding: 0;
-    margin: 0 0 0.8rem 0;
-    font: inherit;
-    color: inherit;
-    text-align: left;
-    cursor: default;
-    pointer-events: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    box-shadow: none;
-    outline: none;
-}
-
-.what-i-offer-toggle > span::after {
-    content: ":";
-}
-
-.what-i-offer-chevron {
-    display: none;
+/* Home photo: square crop centered on face */
+.home-photo {
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    object-position: center 32%;
 }
 
 /* Desktop photo sizing */
 @media (min-width: 769px) {
     .home-photo {
-        max-width: 280px;
+        max-width: 350px;
     }
 }
 
@@ -1409,24 +1385,6 @@ body.page-contact::before {
     min-width: 0;
 }
 
-/* Decorative line before first paragraph in home card right column */
-.home-card-right > p:first-of-type {
-    position: relative;
-    padding-top: 2.2em;
-}
-
-.home-card-right > p:first-of-type::before {
-    content: '';
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background: #3a2300;
-    border-radius: 2px;
-}
-
 @media (max-width: 768px) {
     .content-card {
         width: 90%;
@@ -1483,53 +1441,21 @@ body.page-contact::before {
         flex: none;
     }
 
-    .what-i-offer-toggle {
-        cursor: pointer;
-        pointer-events: auto;
-        width: 100%;
-        justify-content: space-between;
-        margin-bottom: 0;
-        padding-bottom: 0.5rem;
-    }
-
-    .what-i-offer-toggle > span::after {
-        content: none;
-    }
-
-    .what-i-offer-accordion + .cta-button {
-        margin-top: 1.5rem !important;
-    }
-
     .cta-button {
         margin-top: 1rem !important;
         margin-bottom: 0.5rem !important;
     }
 
+    .home-photo + .cta-button {
+        margin-bottom: 2rem !important;
+    }
+
     .home-bottom-cta-mobile {
         display: inline-block !important;
+        margin-top: 2rem !important;
     }
+}
 
-    .what-i-offer-chevron {
-        display: block;
-        flex-shrink: 0;
-        transition: transform 0.3s ease;
-    }
-
-    .what-i-offer-toggle[aria-expanded="true"] .what-i-offer-chevron {
-        transform: rotate(180deg);
-    }
-
-    .what-i-offer-content {
-        overflow: hidden;
-        max-height: 1.5em;
-        transition: max-height 0.4s ease;
-        -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0) 100%);
-        mask-image: linear-gradient(to bottom, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0) 100%);
-    }
-
-    .what-i-offer-content.open {
-        max-height: 2000px;
-        -webkit-mask-image: none;
-        mask-image: none;
-    }
+.home-bottom-cta-mobile {
+    display: none;
 }
