@@ -1272,6 +1272,15 @@ body::before {
     z-index: -1;
 }
 
+/* Home: enlarge and shift the gradient up + wider so the logo lands on
+   the turquoise portion of the gradient instead of the yellow */
+body.home::before {
+    top: -30vh;
+    left: -20vw;
+    width: 140vw;
+    height: 150vh;
+}
+
 /* Ami Kernan, LICSW credential line under photo / above contact */
 .photo-credential {
     font-weight: 400;
