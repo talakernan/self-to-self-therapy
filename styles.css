@@ -782,7 +782,6 @@ section {
 
 .about-image img {
     width: 100%;
-    max-width: 300px;
     border-radius: 8px;
 }
 
@@ -1221,6 +1220,80 @@ body {
     background-position: center;
 }
 
+/* What I offer accordion */
+.what-i-offer-toggle {
+    display: flex;
+    align-items: center;
+    gap: 0.4em;
+    background: none;
+    border: none;
+    padding: 0;
+    margin-bottom: 0.8rem;
+    font-family: inherit;
+    color: inherit;
+    text-align: left;
+    cursor: default;
+    pointer-events: none;
+}
+
+.what-i-offer-chevron {
+    display: none;
+}
+
+/* Desktop photo sizing */
+@media (min-width: 769px) {
+    .home-photo {
+        max-width: 280px;
+    }
+}
+
+.about-image-mobile {
+    display: none;
+}
+
+/* Inner pages: remove direct background, use ::before for rotation/zoom variance */
+body.page-about,
+body.page-faq,
+body.page-fees,
+body.page-contact {
+    background-image: none;
+}
+
+body.page-about::before,
+body.page-faq::before,
+body.page-fees::before,
+body.page-contact::before {
+    content: '';
+    position: fixed;
+    width: 200%;
+    height: 200%;
+    top: -50%;
+    left: -50%;
+    background-image: url('images/S2S_gradient_1.svg');
+    background-size: cover;
+    z-index: -1;
+}
+
+body.page-about::before {
+    background-position: 80% 15%;
+    transform: rotate(18deg);
+}
+
+body.page-faq::before {
+    background-position: 20% 75%;
+    transform: scaleY(-1) rotate(-22deg);
+}
+
+body.page-fees::before {
+    background-position: 85% 60%;
+    transform: scaleX(-1) rotate(25deg);
+}
+
+body.page-contact::before {
+    background-position: 30% 25%;
+    transform: scaleY(-1) rotate(20deg);
+}
+
 /* Home page: logo hero */
 .logo-hero {
     display: flex;
@@ -1243,7 +1316,7 @@ body {
 .card-top-fade {
     position: fixed;
     top: 0;
-    height: 7.5rem;
+    height: 8.25rem;
     background: linear-gradient(to bottom, rgb(199, 232, 216) 0%, rgb(199, 232, 216) 2.75rem, transparent 100%);
     pointer-events: none;
     z-index: 1500;
@@ -1318,7 +1391,85 @@ body {
         width: 52vw;
     }
 
+    .page-title {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .about-image {
+        margin-bottom: 0;
+    }
+
+    .about-image-mobile {
+        display: block;
+        margin-top: 1rem;
+    }
+
+    .about-image-desktop {
+        display: none;
+    }
+
     .home-card-columns {
         flex-direction: column;
+        align-items: stretch;
+        gap: 1.5rem;
+    }
+
+    .home-card-columns + .home-card-columns {
+        margin-top: 1rem !important;
+        padding-top: 1rem !important;
+    }
+
+    .home-card-right {
+        width: 100% !important;
+        max-width: none !important;
+        box-sizing: border-box;
+        flex: none;
+    }
+
+    .what-i-offer-toggle {
+        cursor: pointer;
+        pointer-events: auto;
+        width: 100%;
+        justify-content: space-between;
+        margin-bottom: 0;
+        padding-bottom: 0.5rem;
+    }
+
+    .what-i-offer-accordion + .cta-button {
+        margin-top: 1.5rem !important;
+    }
+
+    .cta-button {
+        margin-top: 1rem !important;
+        margin-bottom: 0.5rem !important;
+    }
+
+    .home-bottom-cta-mobile {
+        display: inline-block !important;
+    }
+
+    .what-i-offer-chevron {
+        display: block;
+        flex-shrink: 0;
+        transition: transform 0.3s ease;
+    }
+
+    .what-i-offer-toggle[aria-expanded="true"] .what-i-offer-chevron {
+        transform: rotate(180deg);
+    }
+
+    .what-i-offer-content {
+        overflow: hidden;
+        max-height: 1.5em;
+        transition: max-height 0.4s ease;
+        -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0) 100%);
+        mask-image: linear-gradient(to bottom, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0) 100%);
+    }
+
+    .what-i-offer-content.open {
+        max-height: 2000px;
+        -webkit-mask-image: none;
+        mask-image: none;
     }
 }

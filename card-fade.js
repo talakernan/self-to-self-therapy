@@ -8,7 +8,7 @@
 
     function update() {
         var rect = card.getBoundingClientRect();
-        var show = rect.top <= 0;
+        var show = rect.top <= 60;
         overlay.style.left = rect.left + 'px';
         overlay.style.width = rect.width + 'px';
         overlay.style.transition = show ? 'opacity 0.3s ease' : 'none';
