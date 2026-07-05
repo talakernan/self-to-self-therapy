@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page not found — Self to Self Therapy</title>
+    <meta name="description" content="This page couldn't be found. Head back to the homepage or explore Self to Self Therapy.">
+    <meta name="robots" content="noindex">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rethink+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="images/feature%20favicon.png" type="image/png" sizes="any">
+    <link rel="icon" href="images/S2S_icon_favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="images/feature%20favicon.png">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="mobile-styles.css">
+</head>
+<body class="page-about">
+    <a class="skip-link" href="#main">Skip to main content</a>
+    <header class="transparent-header">
+        <nav aria-label="Primary">
+            <a href="/" class="logo">
+                <img src="images/S2S_icon_transparent_small.svg" alt="Self to Self Therapy logo">
+                <span class="logo-text">SELF TO SELF THERAPY</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/about.html">About</a></li>
+                <li><a href="/faq.html">FAQ</a></li>
+                <li><a href="/fees.html">Fees</a></li>
+                <li><a href="/contact.html">Contact</a></li>
+                <li><a href="#" class="portal-nav-link">Client portal</a></li>
+            </ul>
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open menu" aria-controls="mobileMenuOverlay" aria-expanded="false"><span aria-hidden="true">☰</span></button>
+        </nav>
+    </header>
+
+    <div class="mobile-menu-overlay" id="mobileMenuOverlay" role="dialog" aria-modal="true" aria-label="Navigation menu">
+        <div class="mobile-menu-header">
+            <a href="/" class="logo mobile-overlay-logo">
+                <img src="images/S2S_icon_transparent_small.svg" alt="Self to Self Therapy logo">
+            </a>
+            <button class="mobile-menu-close" id="mobileMenuClose" aria-label="Close menu"><span aria-hidden="true">✕</span></button>
+        </div>
+        <ul class="mobile-menu-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/about.html">About</a></li>
+            <li><a href="/faq.html">FAQ</a></li>
+            <li><a href="/fees.html">Fees</a></li>
+            <li><a href="/contact.html">Contact</a></li>
+            <li><a href="#" class="portal-nav-link">Client portal</a></li>
+        </ul>
+    </div>
+
+    <main id="main">
+      <div class="content-card" style="margin-top: 7rem;">
+        <h1 class="page-title fade-in">Page not found</h1>
+        <p class="fade-in" style="margin-bottom:1.2em;">The page you were looking for isn't here. It may have moved, or the link may have a typo.</p>
+        <p class="fade-in" style="margin-bottom:1.5em;">Try heading back to the <a href="/">homepage</a>, or <a href="/contact.html">reach out</a> if you were looking for something specific.</p>
+        <a href="/" class="cta-button fade-in" style="display: inline-block;"><span>Back to home</span></a>
+      </div>
+    </main>
+
+    <footer>
+        <p>&copy; <span id="footer-year"></span> Self to Self Therapy. All rights reserved. | Licensed in Maryland, Washington DC, and Oregon</p>
+    </footer>
+
+    <script>
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+        const mobileMenuClose = document.getElementById('mobileMenuClose');
+        const mobileMenuLinks = document.querySelectorAll('.mobile-menu-links a');
+
+        function openMobileMenu() {
+            mobileMenuOverlay.classList.add('active'); mobileMenuBtn.setAttribute('aria-expanded', 'true');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeMobileMenu() {
+            mobileMenuOverlay.classList.remove('active'); mobileMenuBtn.setAttribute('aria-expanded', 'false');
+            document.body.style.overflow = 'auto';
+        }
+        mobileMenuBtn.addEventListener('click', openMobileMenu);
+        mobileMenuClose.addEventListener('click', closeMobileMenu);
+        mobileMenuLinks.forEach(link => link.addEventListener('click', closeMobileMenu));
+        mobileMenuOverlay.addEventListener('click', function(e) {
+            if (e.target === mobileMenuOverlay) closeMobileMenu();
+        });
+    </script>
+    <script>document.getElementById("footer-year").textContent = new Date().getFullYear();</script>
+    <script src="animation.js"></script>
+    <script src="menu-fix.js"></script>
+    <script src="card-fade.js"></script>
+</body>
+</html>
